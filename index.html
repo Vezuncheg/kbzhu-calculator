@@ -1,242 +1,257 @@
-
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ПП Реалити — Калькуляторы здоровья</title>
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-body{font-family:var(--font-sans)}
-.wrap{padding:1.5rem 0}
-.section{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:1.25rem;margin-bottom:1rem}
-.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
-label{display:block;font-size:13px;color:var(--color-text-secondary);margin-bottom:4px}
-select,input[type=number]{width:100%;padding:8px 10px;font-size:14px;border:0.5px solid var(--color-border-secondary);border-radius:var(--border-radius-md);background:var(--color-background-secondary);color:var(--color-text-primary)}
-.radio-group{display:flex;flex-direction:column;gap:6px}
-.radio-opt{display:flex;align-items:center;gap:8px;padding:8px 10px;border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-md);cursor:pointer;font-size:14px;color:var(--color-text-primary);transition:background .15s}
-.radio-opt:hover{background:var(--color-background-secondary)}
-.radio-opt.active{border-color:var(--color-border-info);background:var(--color-background-info);color:var(--color-text-info)}
-.dot{width:14px;height:14px;border-radius:50%;border:1.5px solid var(--color-border-secondary);flex-shrink:0;display:flex;align-items:center;justify-content:center}
-.dot.filled::after{content:'';width:7px;height:7px;border-radius:50%;background:#185FA5;display:block}
-.calc-btn{width:100%;padding:12px;font-size:15px;font-weight:500;background:var(--color-text-primary);color:var(--color-background-primary);border:none;border-radius:var(--border-radius-lg);cursor:pointer;margin-top:4px}
-.calc-btn:hover{opacity:.88}
-.result-card{border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:1.25rem;background:var(--color-background-primary);margin-bottom:1rem}
-.kcal-big{font-size:40px;font-weight:500;color:var(--color-text-primary);line-height:1.1}
-.kcal-label{font-size:13px;color:var(--color-text-secondary);margin-top:4px}
-.kcal-desc{font-size:14px;color:var(--color-text-secondary);margin-top:10px;line-height:1.6}
-.macro-row{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:0.5px solid var(--color-border-tertiary)}
-.macro-row:last-child{border-bottom:none}
-.macro-dot{width:12px;height:12px;border-radius:50%;flex-shrink:0}
-.macro-name{font-size:14px;color:var(--color-text-primary);flex:1}
-.macro-val{font-size:15px;font-weight:500;color:var(--color-text-primary)}
-.macro-kcal{font-size:12px;color:var(--color-text-secondary);margin-left:4px}
-.water-row{display:flex;align-items:center;gap:12px;padding:6px 0}
-.water-icon{font-size:22px}
-.water-big{font-size:26px;font-weight:500;color:var(--color-text-primary)}
-.water-sub{font-size:13px;color:var(--color-text-secondary);margin-top:2px}
-.sec-title{font-size:14px;font-weight:500;color:var(--color-text-secondary);margin-bottom:12px;text-transform:uppercase;letter-spacing:.05em;font-size:12px}
-.hidden{display:none}
-.chart-wrap{position:relative;width:100%;height:200px;margin:12px 0 6px}
-.bmi-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
-.badge{font-size:12px;padding:3px 10px;border-radius:var(--border-radius-md);background:var(--color-background-secondary);color:var(--color-text-secondary)}
-.badge.ok{background:var(--color-background-success);color:var(--color-text-success)}
-.badge.warn{background:var(--color-background-warning);color:var(--color-text-warning)}
-.badge.err{background:var(--color-background-danger);color:var(--color-text-danger)}
-</style>
-<div class="wrap">
-<div class="section">
-  <p class="sec-title">Личные данные</p>
-  <div class="grid2" style="margin-bottom:12px">
-    <div>
-      <label>Пол</label>
-      <select id="gender">
-        <option value="m">Мужской</option>
-        <option value="f">Женский</option>
-      </select>
-    </div>
-    <div>
-      <label>Возраст (лет)</label>
-      <input type="number" id="age" value="25" min="10" max="100">
-    </div>
-  </div>
-  <div class="grid2" style="margin-bottom:0">
-    <div>
-      <label>Рост (см)</label>
-      <input type="number" id="height" value="175" min="100" max="250">
-    </div>
-    <div>
-      <label>Вес (кг)</label>
-      <input type="number" id="weight" value="70" min="30" max="300">
-    </div>
-  </div>
-</div>
-
-<div class="section">
-  <p class="sec-title">Уровень активности</p>
-  <div class="radio-group" id="activity-group">
-    <div class="radio-opt active" data-val="1.2"><span class="dot filled"></span>Минимальная — сидячий образ жизни</div>
-    <div class="radio-opt" data-val="1.375"><span class="dot"></span>Лёгкая — 1–3 тренировки в неделю</div>
-    <div class="radio-opt" data-val="1.55"><span class="dot"></span>Умеренная — 3–5 тренировок в неделю</div>
-    <div class="radio-opt" data-val="1.725"><span class="dot"></span>Высокая — 6–7 тренировок или физический труд</div>
-  </div>
-</div>
-
-<div class="section">
-  <p class="sec-title">Цель</p>
-  <div class="radio-group" id="goal-group">
-    <div class="radio-opt" data-val="0.8"><span class="dot"></span>Похудение</div>
-    <div class="radio-opt active" data-val="1"><span class="dot filled"></span>Поддержание веса</div>
-    <div class="radio-opt" data-val="1.15"><span class="dot"></span>Набор массы</div>
-  </div>
-</div>
-
-<button class="calc-btn" onclick="calculate()">Рассчитать</button>
-
-<div id="result" class="hidden" style="margin-top:1.5rem">
-
-  <div class="result-card">
-    <p class="sec-title">Норма калорий в день</p>
-    <p class="kcal-big" id="kcal-num">—</p>
-    <p class="kcal-label">ккал / день</p>
-    <div class="bmi-row">
-      <span class="badge" id="bmi-badge"></span>
-      <span class="badge" id="goal-badge"></span>
-    </div>
-    <p class="kcal-desc" id="kcal-desc"></p>
-  </div>
-
-  <div class="result-card">
-    <p class="sec-title">Белки, жиры и углеводы</p>
-    <div class="chart-wrap">
-      <canvas id="macroChart"></canvas>
-    </div>
-    <div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:14px">
-      <span style="display:flex;align-items:center;gap:5px;font-size:12px;color:var(--color-text-secondary)"><span style="width:10px;height:10px;border-radius:2px;background:#185FA5"></span>Белки</span>
-      <span style="display:flex;align-items:center;gap:5px;font-size:12px;color:var(--color-text-secondary)"><span style="width:10px;height:10px;border-radius:2px;background:#0F6E56"></span>Жиры</span>
-      <span style="display:flex;align-items:center;gap:5px;font-size:12px;color:var(--color-text-secondary)"><span style="width:10px;height:10px;border-radius:2px;background:#BA7517"></span>Углеводы</span>
-    </div>
-    <div id="macro-list">
-      <div class="macro-row">
-        <span class="macro-dot" style="background:#185FA5"></span>
-        <span class="macro-name">Белки</span>
-        <span class="macro-val" id="prot-g">—</span>
-        <span class="macro-kcal" id="prot-k"></span>
-      </div>
-      <div class="macro-row">
-        <span class="macro-dot" style="background:#0F6E56"></span>
-        <span class="macro-name">Жиры</span>
-        <span class="macro-val" id="fat-g">—</span>
-        <span class="macro-kcal" id="fat-k"></span>
-      </div>
-      <div class="macro-row">
-        <span class="macro-dot" style="background:#BA7517"></span>
-        <span class="macro-name">Углеводы</span>
-        <span class="macro-val" id="carb-g">—</span>
-        <span class="macro-kcal" id="carb-k"></span>
-      </div>
-    </div>
-  </div>
-
-  <div class="result-card">
-    <p class="sec-title">Норма воды в день</p>
-    <div class="water-row">
-      <div>
-        <p class="water-big" id="water-l">—</p>
-        <p class="water-sub" id="water-ml"></p>
-      </div>
-    </div>
-    <p style="font-size:13px;color:var(--color-text-secondary);margin-top:10px;line-height:1.6" id="water-desc"></p>
-  </div>
-
-</div>
-</div>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
-<script>
-let actVal = 1.2, goalVal = 1, macroChart = null;
-
-document.querySelectorAll('#activity-group .radio-opt').forEach(el=>{
-  el.addEventListener('click',()=>{
-    document.querySelectorAll('#activity-group .radio-opt').forEach(x=>{x.classList.remove('active');x.querySelector('.dot').classList.remove('filled')});
-    el.classList.add('active');el.querySelector('.dot').classList.add('filled');
-    actVal=parseFloat(el.dataset.val);
-  });
-});
-document.querySelectorAll('#goal-group .radio-opt').forEach(el=>{
-  el.addEventListener('click',()=>{
-    document.querySelectorAll('#goal-group .radio-opt').forEach(x=>{x.classList.remove('active');x.querySelector('.dot').classList.remove('filled')});
-    el.classList.add('active');el.querySelector('.dot').classList.add('filled');
-    goalVal=parseFloat(el.dataset.val);
-  });
-});
-
-function calculate(){
-  const g=document.getElementById('gender').value;
-  const age=parseFloat(document.getElementById('age').value)||25;
-  const h=parseFloat(document.getElementById('height').value)||175;
-  const w=parseFloat(document.getElementById('weight').value)||70;
-
-  let bmr = g==='m'
-    ? 10*w + 6.25*h - 5*age + 5
-    : 10*w + 6.25*h - 5*age - 161;
-
-  const tdee = Math.round(bmr * actVal);
-  const kcal = Math.round(tdee * goalVal);
-
-  const prot = Math.round(kcal * 0.25 / 4);
-  const fat  = Math.round(kcal * 0.30 / 9);
-  const carb = Math.round(kcal * 0.45 / 4);
-
-  const protK = Math.round(prot*4);
-  const fatK  = Math.round(fat*9);
-  const carbK = Math.round(carb*4);
-
-  const waterMl = Math.round(w * 35);
-  const waterL  = (waterMl/1000).toFixed(1);
-
-  const bmi = w/((h/100)**2);
-  let bmiText='', bmiClass='';
-  if(bmi<18.5){bmiText='ИМТ: недовес';bmiClass='warn';}
-  else if(bmi<25){bmiText='ИМТ: норма';bmiClass='ok';}
-  else if(bmi<30){bmiText='ИМТ: избыток';bmiClass='warn';}
-  else{bmiText='ИМТ: ожирение';bmiClass='err';}
-
-  const goalTexts={'0.8':'Цель: похудение','1':'Цель: поддержание','1.15':'Цель: набор массы'};
-  const descs={
-    '0.8':`Дефицит калорий в ${Math.round(tdee - kcal)} ккал относительно нормы поддержания. Рекомендуется снижение не более 0,5–1 кг в неделю. Сочетайте дефицит с физической нагрузкой и достаточным количеством белка.`,
-    '1':`Ваша норма для поддержания текущего веса с учётом уровня активности. Соблюдайте баланс БЖУ и не пропускайте приёмы пищи.`,
-    '1.15':`Профицит в ${Math.round(kcal - tdee)} ккал относительно нормы поддержания. Набор рекомендуется сочетать с силовыми тренировками для роста мышечной массы.`
-  };
-
-  document.getElementById('kcal-num').textContent = kcal.toLocaleString('ru');
-  document.getElementById('bmi-badge').textContent = `${bmiText} (${bmi.toFixed(1)})`;
-  document.getElementById('bmi-badge').className = `badge ${bmiClass}`;
-  document.getElementById('goal-badge').textContent = goalTexts[String(goalVal)];
-  document.getElementById('kcal-desc').textContent = descs[String(goalVal)];
-
-  document.getElementById('prot-g').textContent = `${prot} г`;
-  document.getElementById('prot-k').textContent = `(${protK} ккал)`;
-  document.getElementById('fat-g').textContent  = `${fat} г`;
-  document.getElementById('fat-k').textContent  = `(${fatK} ккал)`;
-  document.getElementById('carb-g').textContent = `${carb} г`;
-  document.getElementById('carb-k').textContent = `(${carbK} ккал)`;
-
-  document.getElementById('water-l').textContent = `${waterL} л`;
-  document.getElementById('water-ml').textContent = `${waterMl.toLocaleString('ru')} мл`;
-  document.getElementById('water-desc').textContent = `Рассчитано по формуле 35 мл × масса тела. При высоких нагрузках или жаркой погоде добавляйте 300–500 мл. Старайтесь пить воду равномерно в течение дня.`;
-
-  if(macroChart) macroChart.destroy();
-  macroChart = new Chart(document.getElementById('macroChart'),{
-    type:'doughnut',
-    data:{
-      labels:['Белки','Жиры','Углеводы'],
-      datasets:[{data:[protK,fatK,carbK],backgroundColor:['#185FA5','#0F6E56','#BA7517'],borderWidth:0,hoverOffset:6}]
-    },
-    options:{
-      responsive:true,
-      maintainAspectRatio:false,
-      cutout:'62%',
-      plugins:{legend:{display:false},tooltip:{callbacks:{label:ctx=>' '+ctx.label+': '+ctx.parsed+' ккал'}}}
-    }
-  });
-
-  document.getElementById('result').classList.remove('hidden');
-  document.getElementById('result').scrollIntoView({behavior:'smooth',block:'start'});
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#0a0a0f;
+  --bg2:#12121a;
+  --bg3:#1a1a26;
+  --purple:#7c3aed;
+  --purple2:#a855f7;
+  --green:#22c55e;
+  --blue:#3b82f6;
+  --text:#f1f5f9;
+  --muted:#94a3b8;
+  --border:rgba(124,58,237,0.25);
 }
-</script>
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;min-height:100vh;overflow-x:hidden}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,10,15,0.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 5%}
+.nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.logo-icon{width:38px;height:38px;background:linear-gradient(135deg,#7c3aed,#3b82f6);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:900;color:#fff;letter-spacing:-1px}
+.logo-text{font-size:17px;font-weight:800;color:var(--text);letter-spacing:.5px}
+.logo-text span{color:var(--purple2)}
+.nav-links{display:flex;gap:32px}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:14px;font-weight:500;transition:.2s}
+.nav-links a:hover{color:var(--text)}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;padding:100px 5% 60px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-200px;left:-200px;width:600px;height:600px;background:radial-gradient(circle,rgba(124,58,237,0.18) 0%,transparent 70%);pointer-events:none}
+.hero::after{content:'';position:absolute;bottom:-100px;right:-100px;width:500px;height:500px;background:radial-gradient(circle,rgba(59,130,246,0.12) 0%,transparent 70%);pointer-events:none}
+.hero-inner{max-width:1200px;margin:0 auto;width:100%}
+.hero-tag{display:inline-flex;align-items:center;gap:8px;background:rgba(124,58,237,0.15);border:1px solid rgba(124,58,237,0.3);border-radius:100px;padding:6px 16px;font-size:13px;color:var(--purple2);margin-bottom:28px}
+.hero-tag::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--green);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+h1{font-size:clamp(38px,6vw,72px);font-weight:900;line-height:1.05;margin-bottom:22px;letter-spacing:-2px}
+h1 .accent{background:linear-gradient(90deg,#a855f7,#3b82f6);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero-sub{font-size:18px;color:var(--muted);max-width:560px;line-height:1.6;margin-bottom:40px}
+.hero-btn{display:inline-flex;align-items:center;gap:10px;background:var(--green);color:#0a0a0f;padding:16px 32px;border-radius:100px;font-size:16px;font-weight:700;text-decoration:none;transition:.2s;cursor:pointer;border:none}
+.hero-btn:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(34,197,94,0.35)}
+.hero-btn svg{width:18px;height:18px}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-top:60px}
+.stat-card{background:var(--bg3);border:1px solid var(--border);border-radius:16px;padding:24px;transition:.2s}
+.stat-card:hover{border-color:rgba(124,58,237,0.5);transform:translateY(-3px)}
+.stat-num{font-size:32px;font-weight:900;color:var(--text);margin-bottom:6px}
+.stat-num.purple{color:var(--purple2)}
+.stat-num.green{color:var(--green)}
+.stat-label{font-size:13px;color:var(--muted);line-height:1.5}
+
+/* SECTION */
+section{padding:80px 5%}
+.section-inner{max-width:1200px;margin:0 auto}
+.section-tag{font-size:13px;font-weight:600;color:var(--purple2);text-transform:uppercase;letter-spacing:2px;margin-bottom:12px}
+.section-title{font-size:clamp(28px,4vw,44px);font-weight:800;line-height:1.15;letter-spacing:-1px;margin-bottom:16px}
+.section-sub{font-size:16px;color:var(--muted);max-width:560px;line-height:1.6;margin-bottom:48px}
+
+/* CALC CARDS */
+.calc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:24px}
+.calc-card{background:var(--bg2);border:1px solid var(--border);border-radius:20px;padding:32px;display:flex;flex-direction:column;gap:20px;transition:.25s;cursor:pointer;text-decoration:none;color:inherit;position:relative;overflow:hidden}
+.calc-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--purple),var(--blue));opacity:0;transition:.25s}
+.calc-card:hover{border-color:rgba(124,58,237,0.5);transform:translateY(-4px);box-shadow:0 16px 48px rgba(0,0,0,0.4)}
+.calc-card:hover::before{opacity:1}
+.card-num{font-size:13px;font-weight:700;color:var(--purple2);background:rgba(124,58,237,0.12);border:1px solid rgba(124,58,237,0.2);width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center}
+.card-emoji{font-size:36px;line-height:1}
+.card-title{font-size:22px;font-weight:800;letter-spacing:-.5px}
+.card-desc{font-size:14px;color:var(--muted);line-height:1.6}
+.card-tags{display:flex;flex-wrap:wrap;gap:8px}
+.tag{font-size:12px;padding:4px 12px;border-radius:100px;background:rgba(255,255,255,0.06);color:var(--muted)}
+.card-cta{display:flex;align-items:center;gap:8px;color:var(--green);font-size:14px;font-weight:600;margin-top:auto}
+.card-cta svg{width:16px;height:16px;transition:.2s}
+.calc-card:hover .card-cta svg{transform:translateX(4px)}
+.card-img{width:100%;height:140px;border-radius:12px;object-fit:cover;background:var(--bg3);display:flex;align-items:center;justify-content:center;overflow:hidden}
+.card-img-placeholder{width:100%;height:140px;border-radius:12px;background:linear-gradient(135deg,rgba(124,58,237,0.15),rgba(59,130,246,0.1));display:flex;align-items:center;justify-content:center;font-size:52px}
+
+/* HOW */
+.how-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}
+.how-step{background:var(--bg2);border:1px solid rgba(255,255,255,0.06);border-radius:16px;padding:28px;position:relative}
+.step-n{font-size:48px;font-weight:900;color:rgba(124,58,237,0.15);position:absolute;top:20px;right:24px;line-height:1}
+.step-icon{font-size:28px;margin-bottom:14px}
+.step-title{font-size:16px;font-weight:700;margin-bottom:8px}
+.step-desc{font-size:14px;color:var(--muted);line-height:1.6}
+
+/* FOOTER */
+footer{background:var(--bg2);border-top:1px solid var(--border);padding:40px 5%}
+.footer-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:gap}
+.footer-logo{font-size:20px;font-weight:800;color:var(--text)}
+.footer-logo span{color:var(--purple2)}
+.footer-copy{font-size:13px;color:var(--muted)}
+
+/* GLOW LINE */
+.glow-divider{height:1px;background:linear-gradient(90deg,transparent,rgba(124,58,237,0.5),rgba(59,130,246,0.5),transparent);margin:0 5%}
+
+@media(max-width:768px){
+  .nav-links{display:none}
+  .stats{grid-template-columns:1fr 1fr}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="logo">
+      <div class="logo-icon">ПП</div>
+      <span class="logo-text">ПП <span>Реалити</span></span>
+    </a>
+    <div class="nav-links">
+      <a href="#calculators">Калькуляторы</a>
+      <a href="#how">Как работает</a>
+    </div>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-tag">Бесплатные инструменты для здоровья</div>
+    <h1>Узнай своё тело<br>и достигни <span class="accent">результата</span></h1>
+    <p class="hero-sub">Научные калькуляторы для расчёта процента жира, базового метаболизма и нормы КБЖУ. Без воды — только точные данные.</p>
+    <a href="#calculators" class="hero-btn">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      Начать расчёт
+    </a>
+    <div class="stats">
+      <div class="stat-card">
+        <div class="stat-num purple">3</div>
+        <div class="stat-label">научных калькулятора для точной оценки состава тела</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num green">100%</div>
+        <div class="stat-label">бесплатно и без регистрации</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">ВОЗ</div>
+        <div class="stat-label">формулы и нормы на основе рекомендаций ВОЗ и научных исследований</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num" style="color:var(--blue)">≤2 мин</div>
+        <div class="stat-label">время расчёта — введи данные и получи результат</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="glow-divider"></div>
+
+<section id="calculators">
+  <div class="section-inner">
+    <div class="section-tag">Инструменты</div>
+    <h2 class="section-title">Калькуляторы</h2>
+    <p class="section-sub">Выбери нужный инструмент — каждый даёт подробный результат с рекомендациями.</p>
+    <div class="calc-grid">
+
+      <a href="fat.html" class="calc-card">
+        <div class="card-img-placeholder">🔥</div>
+        <div class="card-num">01</div>
+        <div class="card-title">Процент жира</div>
+        <div class="card-desc">Рассчитай точный процент жировой ткани в теле по формуле ВМС США. Узнай свою категорию и получи персональные рекомендации.</div>
+        <div class="card-tags">
+          <span class="tag">Пол</span>
+          <span class="tag">Рост / Вес</span>
+          <span class="tag">Обхваты</span>
+        </div>
+        <div class="card-cta">
+          Рассчитать
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </div>
+      </a>
+
+      <a href="bmr.html" class="calc-card">
+        <div class="card-img-placeholder">⚡</div>
+        <div class="card-num">02</div>
+        <div class="card-title">Базовый метаболизм</div>
+        <div class="card-desc">Узнай, сколько калорий твой организм тратит в покое (BMR). Основа для любой диеты и программы тренировок.</div>
+        <div class="card-tags">
+          <span class="tag">Пол / Возраст</span>
+          <span class="tag">Рост / Вес</span>
+          <span class="tag">% жира</span>
+        </div>
+        <div class="card-cta">
+          Рассчитать
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </div>
+      </a>
+
+      <a href="kbzhu.html" class="calc-card">
+        <div class="card-img-placeholder">🥗</div>
+        <div class="card-num">03</div>
+        <div class="card-title">Калькулятор КБЖУ</div>
+        <div class="card-desc">Рассчитай суточную норму калорий, белков, жиров и углеводов под твою цель: похудение, поддержание или набор массы.</div>
+        <div class="card-tags">
+          <span class="tag">Цель</span>
+          <span class="tag">Активность</span>
+          <span class="tag">БЖУ + вода</span>
+        </div>
+        <div class="card-cta">
+          Рассчитать
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<div class="glow-divider"></div>
+
+<section id="how">
+  <div class="section-inner">
+    <div class="section-tag">Как это работает</div>
+    <h2 class="section-title">Три шага к результату</h2>
+    <p class="section-sub">Просто введи свои данные и получи точный результат с объяснениями.</p>
+    <div class="how-grid">
+      <div class="how-step">
+        <span class="step-n">01</span>
+        <div class="step-icon">📋</div>
+        <div class="step-title">Введи данные</div>
+        <div class="step-desc">Пол, возраст, рост, вес и несколько простых замеров — всё, что нужно для точного расчёта.</div>
+      </div>
+      <div class="how-step">
+        <span class="step-n">02</span>
+        <div class="step-icon">🧮</div>
+        <div class="step-title">Получи результат</div>
+        <div class="step-desc">Научные формулы мгновенно рассчитают твои показатели с точностью до грамма и калории.</div>
+      </div>
+      <div class="how-step">
+        <span class="step-n">03</span>
+        <div class="step-icon">🎯</div>
+        <div class="step-title">Действуй</div>
+        <div class="step-desc">Получи персональные рекомендации и чёткий план — что делать дальше для достижения цели.</div>
+      </div>
+      <div class="how-step">
+        <span class="step-n">04</span>
+        <div class="step-icon">📈</div>
+        <div class="step-title">Отслеживай прогресс</div>
+        <div class="step-desc">Пересчитывай показатели раз в месяц, чтобы видеть изменения и корректировать план.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">ПП <span>Реалити</span></div>
+    <div class="footer-copy">© 2025 ПП Реалити — Калькуляторы здоровья</div>
+  </div>
+</footer>
+
+</body>
+</html>
