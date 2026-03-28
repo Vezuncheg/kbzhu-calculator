@@ -7,105 +7,91 @@
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
 *{margin:0;padding:0;box-sizing:border-box}
-:root{
-  --bg:#0a0a0f;
-  --bg2:#12121a;
-  --bg3:#1a1a26;
-  --purple:#7c3aed;
-  --purple2:#a855f7;
-  --green:#22c55e;
-  --blue:#3b82f6;
-  --text:#f1f5f9;
-  --muted:#94a3b8;
-  --border:rgba(124,58,237,0.25);
-}
+:root{--bg:#0a0a0f;--bg2:#12121a;--bg3:#1a1a26;--purple:#7c3aed;--purple2:#a855f7;--green:#22c55e;--blue:#3b82f6;--amber:#f59e0b;--text:#f1f5f9;--muted:#94a3b8;--border:rgba(124,58,237,0.25)}
 html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;min-height:100vh;overflow-x:hidden}
-
-/* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,10,15,0.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 5%}
+body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;overflow-x:hidden}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,10,15,0.88);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 5%}
 .nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px}
 .logo{display:flex;align-items:center;gap:10px;text-decoration:none}
-.logo-icon{width:38px;height:38px;background:linear-gradient(135deg,#7c3aed,#3b82f6);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:900;color:#fff;letter-spacing:-1px}
-.logo-text{font-size:17px;font-weight:800;color:var(--text);letter-spacing:.5px}
+.logo-icon{width:38px;height:38px;background:linear-gradient(135deg,#7c3aed,#3b82f6);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:900;color:#fff}
+.logo-text{font-size:17px;font-weight:800;color:var(--text)}
 .logo-text span{color:var(--purple2)}
-.nav-links{display:flex;gap:32px}
+.nav-links{display:flex;gap:28px}
 .nav-links a{color:var(--muted);text-decoration:none;font-size:14px;font-weight:500;transition:.2s}
 .nav-links a:hover{color:var(--text)}
 
 /* HERO */
 .hero{min-height:100vh;display:flex;align-items:center;padding:100px 5% 60px;position:relative;overflow:hidden}
-.hero::before{content:'';position:absolute;top:-200px;left:-200px;width:600px;height:600px;background:radial-gradient(circle,rgba(124,58,237,0.18) 0%,transparent 70%);pointer-events:none}
-.hero::after{content:'';position:absolute;bottom:-100px;right:-100px;width:500px;height:500px;background:radial-gradient(circle,rgba(59,130,246,0.12) 0%,transparent 70%);pointer-events:none}
+.hero::before{content:'';position:absolute;top:-200px;left:-100px;width:600px;height:600px;background:radial-gradient(circle,rgba(124,58,237,0.16) 0%,transparent 70%);pointer-events:none}
+.hero::after{content:'';position:absolute;bottom:-100px;right:-100px;width:500px;height:500px;background:radial-gradient(circle,rgba(59,130,246,0.1) 0%,transparent 70%);pointer-events:none}
 .hero-inner{max-width:1200px;margin:0 auto;width:100%}
 .hero-tag{display:inline-flex;align-items:center;gap:8px;background:rgba(124,58,237,0.15);border:1px solid rgba(124,58,237,0.3);border-radius:100px;padding:6px 16px;font-size:13px;color:var(--purple2);margin-bottom:28px}
 .hero-tag::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--green);animation:pulse 2s infinite}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
-h1{font-size:clamp(38px,6vw,72px);font-weight:900;line-height:1.05;margin-bottom:22px;letter-spacing:-2px}
+h1{font-size:clamp(38px,6vw,70px);font-weight:900;line-height:1.05;margin-bottom:20px;letter-spacing:-2px}
 h1 .accent{background:linear-gradient(90deg,#a855f7,#3b82f6);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.hero-sub{font-size:18px;color:var(--muted);max-width:560px;line-height:1.6;margin-bottom:40px}
-.hero-btn{display:inline-flex;align-items:center;gap:10px;background:var(--green);color:#0a0a0f;padding:16px 32px;border-radius:100px;font-size:16px;font-weight:700;text-decoration:none;transition:.2s;cursor:pointer;border:none}
-.hero-btn:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(34,197,94,0.35)}
-.hero-btn svg{width:18px;height:18px}
-.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-top:60px}
-.stat-card{background:var(--bg3);border:1px solid var(--border);border-radius:16px;padding:24px;transition:.2s}
-.stat-card:hover{border-color:rgba(124,58,237,0.5);transform:translateY(-3px)}
-.stat-num{font-size:32px;font-weight:900;color:var(--text);margin-bottom:6px}
-.stat-num.purple{color:var(--purple2)}
-.stat-num.green{color:var(--green)}
+.hero-sub{font-size:18px;color:var(--muted);max-width:540px;line-height:1.65;margin-bottom:44px}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap}
+.btn-primary{display:inline-flex;align-items:center;gap:10px;background:var(--green);color:#0a0a0f;padding:16px 32px;border-radius:100px;font-size:16px;font-weight:800;text-decoration:none;transition:.2s}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(34,197,94,.35)}
+.btn-secondary{display:inline-flex;align-items:center;gap:10px;background:transparent;color:var(--text);padding:16px 28px;border-radius:100px;font-size:16px;font-weight:600;text-decoration:none;border:1.5px solid rgba(255,255,255,.15);transition:.2s}
+.btn-secondary:hover{border-color:rgba(255,255,255,.3);background:rgba(255,255,255,.04)}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:60px}
+.stat-card{background:var(--bg3);border:1px solid var(--border);border-radius:14px;padding:22px}
+.stat-num{font-size:28px;font-weight:900;margin-bottom:6px}
 .stat-label{font-size:13px;color:var(--muted);line-height:1.5}
 
-/* SECTION */
+/* SECTIONS */
 section{padding:80px 5%}
 .section-inner{max-width:1200px;margin:0 auto}
-.section-tag{font-size:13px;font-weight:600;color:var(--purple2);text-transform:uppercase;letter-spacing:2px;margin-bottom:12px}
-.section-title{font-size:clamp(28px,4vw,44px);font-weight:800;line-height:1.15;letter-spacing:-1px;margin-bottom:16px}
-.section-sub{font-size:16px;color:var(--muted);max-width:560px;line-height:1.6;margin-bottom:48px}
+.section-tag{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:2px;margin-bottom:10px}
+.section-title{font-size:clamp(26px,4vw,42px);font-weight:900;letter-spacing:-1px;margin-bottom:14px}
+.section-sub{font-size:16px;color:var(--muted);max-width:520px;line-height:1.65;margin-bottom:44px}
+.glow-divider{height:1px;background:linear-gradient(90deg,transparent,rgba(124,58,237,.4),rgba(59,130,246,.4),transparent);margin:0 5%}
 
-/* CALC CARDS */
-.calc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:24px}
-.calc-card{background:var(--bg2);border:1px solid var(--border);border-radius:20px;padding:32px;display:flex;flex-direction:column;gap:20px;transition:.25s;cursor:pointer;text-decoration:none;color:inherit;position:relative;overflow:hidden}
-.calc-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--purple),var(--blue));opacity:0;transition:.25s}
-.calc-card:hover{border-color:rgba(124,58,237,0.5);transform:translateY(-4px);box-shadow:0 16px 48px rgba(0,0,0,0.4)}
-.calc-card:hover::before{opacity:1}
-.card-num{font-size:13px;font-weight:700;color:var(--purple2);background:rgba(124,58,237,0.12);border:1px solid rgba(124,58,237,0.2);width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center}
-.card-emoji{font-size:36px;line-height:1}
-.card-title{font-size:22px;font-weight:800;letter-spacing:-.5px}
-.card-desc{font-size:14px;color:var(--muted);line-height:1.6}
-.card-tags{display:flex;flex-wrap:wrap;gap:8px}
-.tag{font-size:12px;padding:4px 12px;border-radius:100px;background:rgba(255,255,255,0.06);color:var(--muted)}
-.card-cta{display:flex;align-items:center;gap:8px;color:var(--green);font-size:14px;font-weight:600;margin-top:auto}
-.card-cta svg{width:16px;height:16px;transition:.2s}
-.calc-card:hover .card-cta svg{transform:translateX(4px)}
-.card-img{width:100%;height:140px;border-radius:12px;object-fit:cover;background:var(--bg3);display:flex;align-items:center;justify-content:center;overflow:hidden}
-.card-img-placeholder{width:100%;height:140px;border-radius:12px;background:linear-gradient(135deg,rgba(124,58,237,0.15),rgba(59,130,246,0.1));display:flex;align-items:center;justify-content:center;font-size:52px}
+/* THREE PATHS */
+.paths-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.path-card{border-radius:20px;padding:32px;display:flex;flex-direction:column;gap:16px;text-decoration:none;color:inherit;position:relative;overflow:hidden;transition:.25s;cursor:pointer}
+.path-card:hover{transform:translateY(-4px)}
+.path-card.purple-card{background:linear-gradient(135deg,rgba(124,58,237,.25),rgba(124,58,237,.1));border:1px solid rgba(124,58,237,.35)}
+.path-card.blue-card{background:linear-gradient(135deg,rgba(59,130,246,.2),rgba(59,130,246,.08));border:1px solid rgba(59,130,246,.3)}
+.path-card.green-card{background:linear-gradient(135deg,rgba(34,197,94,.18),rgba(34,197,94,.06));border:1px solid rgba(34,197,94,.3)}
+.path-num{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:2px;opacity:.6}
+.path-icon{font-size:40px;line-height:1}
+.path-title{font-size:22px;font-weight:900;letter-spacing:-.5px}
+.path-desc{font-size:14px;color:var(--muted);line-height:1.65}
+.path-meta{font-size:12px;opacity:.6;margin-top:auto;display:flex;align-items:center;gap:6px}
+.path-cta{display:inline-flex;align-items:center;gap:8px;padding:13px 22px;border-radius:100px;font-size:14px;font-weight:700;text-decoration:none;margin-top:4px;transition:.2s;width:fit-content}
+.cta-purple{background:rgba(124,58,237,.25);color:var(--purple2);border:1px solid rgba(124,58,237,.3)}
+.cta-purple:hover{background:rgba(124,58,237,.4)}
+.cta-blue{background:rgba(59,130,246,.2);color:#60a5fa;border:1px solid rgba(59,130,246,.25)}
+.cta-blue:hover{background:rgba(59,130,246,.35)}
+.cta-green{background:rgba(34,197,94,.2);color:var(--green);border:1px solid rgba(34,197,94,.25)}
+.cta-green:hover{background:rgba(34,197,94,.35)}
+.path-items{display:flex;flex-direction:column;gap:7px}
+.path-item{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--muted)}
+.path-item::before{content:'';width:5px;height:5px;border-radius:50%;background:currentColor;opacity:.5;flex-shrink:0}
 
-/* HOW */
-.how-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}
-.how-step{background:var(--bg2);border:1px solid rgba(255,255,255,0.06);border-radius:16px;padding:28px;position:relative}
-.step-n{font-size:48px;font-weight:900;color:rgba(124,58,237,0.15);position:absolute;top:20px;right:24px;line-height:1}
-.step-icon{font-size:28px;margin-bottom:14px}
-.step-title{font-size:16px;font-weight:700;margin-bottom:8px}
-.step-desc{font-size:14px;color:var(--muted);line-height:1.6}
+/* CALC MINI CARDS */
+.calc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.calc-card{background:var(--bg2);border:1px solid rgba(255,255,255,.07);border-radius:16px;padding:24px;text-decoration:none;color:inherit;transition:.2s;display:flex;flex-direction:column;gap:12px}
+.calc-card:hover{border-color:rgba(124,58,237,.3);transform:translateY(-3px)}
+.calc-icon{font-size:28px;line-height:1}
+.calc-title{font-size:16px;font-weight:700}
+.calc-desc{font-size:13px;color:var(--muted);line-height:1.5}
+.calc-link{font-size:13px;color:var(--purple2);font-weight:600;display:flex;align-items:center;gap:5px;margin-top:auto}
 
-/* FOOTER */
 footer{background:var(--bg2);border-top:1px solid var(--border);padding:40px 5%}
-.footer-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:gap}
-.footer-logo{font-size:20px;font-weight:800;color:var(--text)}
+.footer-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
+.footer-logo{font-size:18px;font-weight:800}
 .footer-logo span{color:var(--purple2)}
 .footer-copy{font-size:13px;color:var(--muted)}
 
-/* GLOW LINE */
-.glow-divider{height:1px;background:linear-gradient(90deg,transparent,rgba(124,58,237,0.5),rgba(59,130,246,0.5),transparent);margin:0 5%}
-
-@media(max-width:768px){
-  .nav-links{display:none}
-  .stats{grid-template-columns:1fr 1fr}
-}
+@media(max-width:900px){.paths-grid{grid-template-columns:1fr}.calc-grid{grid-template-columns:1fr 1fr}.stats{grid-template-columns:1fr 1fr}.nav-links{display:none}}
+@media(max-width:560px){.calc-grid{grid-template-columns:1fr}.stats{grid-template-columns:1fr 1fr}}
 </style>
 </head>
 <body>
-
 <nav>
   <div class="nav-inner">
     <a href="index.html" class="logo">
@@ -113,8 +99,8 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:40px 5%}
       <span class="logo-text">ПП <span>Реалити</span></span>
     </a>
     <div class="nav-links">
+      <a href="#paths">С чего начать</a>
       <a href="#calculators">Калькуляторы</a>
-      <a href="#how">Как работает</a>
     </div>
   </div>
 </nav>
@@ -122,29 +108,87 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:40px 5%}
 <section class="hero">
   <div class="hero-inner">
     <div class="hero-tag">Бесплатные инструменты для здоровья</div>
-    <h1>Узнай своё тело<br>и достигни <span class="accent">результата</span></h1>
-    <p class="hero-sub">Научные калькуляторы для расчёта процента жира, базового метаболизма и нормы КБЖУ. Без воды — только точные данные.</p>
-    <a href="#calculators" class="hero-btn">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-      Начать расчёт
-    </a>
+    <h1>Узнай своё тело.<br>Достигни <span class="accent">результата.</span></h1>
+    <p class="hero-sub">Научные калькуляторы, тесты и полный персональный профиль. Без воды — только твои реальные цифры и конкретный план.</p>
+    <div class="hero-actions">
+      <a href="assessment.html" class="btn-primary">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        Составить профиль — 7 мин
+      </a>
+      <a href="#calculators" class="btn-secondary">Просто калькуляторы</a>
+    </div>
     <div class="stats">
       <div class="stat-card">
-        <div class="stat-num purple">3</div>
-        <div class="stat-label">научных калькулятора для точной оценки состава тела</div>
+        <div class="stat-num" style="color:var(--purple2)">3</div>
+        <div class="stat-label">научных калькулятора состава тела</div>
       </div>
       <div class="stat-card">
-        <div class="stat-num green">100%</div>
-        <div class="stat-label">бесплатно и без регистрации</div>
+        <div class="stat-num" style="color:var(--green)">14</div>
+        <div class="stat-label">вопросов в полном ассессменте</div>
       </div>
       <div class="stat-card">
-        <div class="stat-num">ВОЗ</div>
-        <div class="stat-label">формулы и нормы на основе рекомендаций ВОЗ и научных исследований</div>
+        <div class="stat-num" style="color:var(--blue)">~7 мин</div>
+        <div class="stat-label">на полный персональный профиль</div>
       </div>
       <div class="stat-card">
-        <div class="stat-num" style="color:var(--blue)">≤2 мин</div>
-        <div class="stat-label">время расчёта — введи данные и получи результат</div>
+        <div class="stat-num">100%</div>
+        <div class="stat-label">бесплатно, без регистрации</div>
       </div>
+    </div>
+  </div>
+</section>
+
+<div class="glow-divider"></div>
+
+<section id="paths">
+  <div class="section-inner">
+    <div class="section-tag" style="color:var(--purple2)">С чего начать</div>
+    <h2 class="section-title">Выбери свой путь</h2>
+    <p class="section-sub">Три варианта под разные задачи — от быстрого расчёта до полного профиля с планом.</p>
+    <div class="paths-grid">
+
+      <div class="path-card purple-card">
+        <div class="path-num">Путь 01</div>
+        <div class="path-icon">🧮</div>
+        <div class="path-title">Быстрый расчёт</div>
+        <div class="path-desc">Нужна конкретная цифра прямо сейчас? Выбери один калькулятор и получи результат за 1 минуту.</div>
+        <div class="path-items">
+          <div class="path-item">% жира по замерам тела</div>
+          <div class="path-item">Базовый метаболизм BMR</div>
+          <div class="path-item">Норма КБЖУ и вода</div>
+        </div>
+        <div class="path-meta">⏱ 1–2 мин · без регистрации</div>
+        <a href="#calculators" class="path-cta cta-purple">Выбрать калькулятор →</a>
+      </div>
+
+      <div class="path-card blue-card">
+        <div class="path-num">Путь 02</div>
+        <div class="path-icon">📋</div>
+        <div class="path-title">Тесты и опросы</div>
+        <div class="path-desc">Оцени образ жизни, уровень стресса, фитнес-готовность и тип мотивации. Получи свой типаж.</div>
+        <div class="path-items">
+          <div class="path-item">Образ жизни и режим</div>
+          <div class="path-item">Уровень физподготовки</div>
+          <div class="path-item">Тип мотивации</div>
+        </div>
+        <div class="path-meta">⏱ 3–4 мин · 10 вопросов</div>
+        <a href="assessment.html?mode=tests" class="path-cta cta-blue">Пройти тесты →</a>
+      </div>
+
+      <div class="path-card green-card">
+        <div class="path-num">Путь 03</div>
+        <div class="path-icon">👤</div>
+        <div class="path-title">Полный профиль</div>
+        <div class="path-desc">Все расчёты + все тесты в одном потоке. Получи цифры по телу, типаж и персональный план.</div>
+        <div class="path-items">
+          <div class="path-item">Все расчёты: % жира, BMR, КБЖУ</div>
+          <div class="path-item">Профиль образа жизни и мотивации</div>
+          <div class="path-item">Рекомендации и план действий</div>
+        </div>
+        <div class="path-meta">⏱ ~7 мин · 14 вопросов</div>
+        <a href="assessment.html" class="path-cta cta-green">Составить профиль →</a>
+      </div>
+
     </div>
   </div>
 </section>
@@ -153,95 +197,28 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:40px 5%}
 
 <section id="calculators">
   <div class="section-inner">
-    <div class="section-tag">Инструменты</div>
-    <h2 class="section-title">Калькуляторы</h2>
-    <p class="section-sub">Выбери нужный инструмент — каждый даёт подробный результат с рекомендациями.</p>
+    <div class="section-tag" style="color:var(--blue)">Калькуляторы</div>
+    <h2 class="section-title">Быстрый расчёт</h2>
+    <p class="section-sub">Три научных инструмента. Выбери нужный — результат за минуту.</p>
     <div class="calc-grid">
-
       <a href="fat.html" class="calc-card">
-        <div class="card-img-placeholder">🔥</div>
-        <div class="card-num">01</div>
-        <div class="card-title">Процент жира</div>
-        <div class="card-desc">Рассчитай точный процент жировой ткани в теле по формуле ВМС США. Узнай свою категорию и получи персональные рекомендации.</div>
-        <div class="card-tags">
-          <span class="tag">Пол</span>
-          <span class="tag">Рост / Вес</span>
-          <span class="tag">Обхваты</span>
-        </div>
-        <div class="card-cta">
-          Рассчитать
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </div>
+        <div class="calc-icon">🔥</div>
+        <div class="calc-title">Процент жира</div>
+        <div class="calc-desc">Точный расчёт по формуле ВМС США. Категория, масса жира и нежировой ткани, рекомендации.</div>
+        <div class="calc-link">Рассчитать <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
       </a>
-
       <a href="bmr.html" class="calc-card">
-        <div class="card-img-placeholder">⚡</div>
-        <div class="card-num">02</div>
-        <div class="card-title">Базовый метаболизм</div>
-        <div class="card-desc">Узнай, сколько калорий твой организм тратит в покое (BMR). Основа для любой диеты и программы тренировок.</div>
-        <div class="card-tags">
-          <span class="tag">Пол / Возраст</span>
-          <span class="tag">Рост / Вес</span>
-          <span class="tag">% жира</span>
-        </div>
-        <div class="card-cta">
-          Рассчитать
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </div>
+        <div class="calc-icon">⚡</div>
+        <div class="calc-title">Базовый метаболизм</div>
+        <div class="calc-desc">BMR по трём формулам + расход по уровню активности. Основа любого плана питания.</div>
+        <div class="calc-link">Рассчитать <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
       </a>
-
       <a href="kbzhu.html" class="calc-card">
-        <div class="card-img-placeholder">🥗</div>
-        <div class="card-num">03</div>
-        <div class="card-title">Калькулятор КБЖУ</div>
-        <div class="card-desc">Рассчитай суточную норму калорий, белков, жиров и углеводов под твою цель: похудение, поддержание или набор массы.</div>
-        <div class="card-tags">
-          <span class="tag">Цель</span>
-          <span class="tag">Активность</span>
-          <span class="tag">БЖУ + вода</span>
-        </div>
-        <div class="card-cta">
-          Рассчитать
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </div>
+        <div class="calc-icon">🥗</div>
+        <div class="calc-title">Калькулятор КБЖУ</div>
+        <div class="calc-desc">Норма калорий, белков, жиров и углеводов под твою цель. Диаграмма БЖУ и норма воды.</div>
+        <div class="calc-link">Рассчитать <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
       </a>
-
-    </div>
-  </div>
-</section>
-
-<div class="glow-divider"></div>
-
-<section id="how">
-  <div class="section-inner">
-    <div class="section-tag">Как это работает</div>
-    <h2 class="section-title">Три шага к результату</h2>
-    <p class="section-sub">Просто введи свои данные и получи точный результат с объяснениями.</p>
-    <div class="how-grid">
-      <div class="how-step">
-        <span class="step-n">01</span>
-        <div class="step-icon">📋</div>
-        <div class="step-title">Введи данные</div>
-        <div class="step-desc">Пол, возраст, рост, вес и несколько простых замеров — всё, что нужно для точного расчёта.</div>
-      </div>
-      <div class="how-step">
-        <span class="step-n">02</span>
-        <div class="step-icon">🧮</div>
-        <div class="step-title">Получи результат</div>
-        <div class="step-desc">Научные формулы мгновенно рассчитают твои показатели с точностью до грамма и калории.</div>
-      </div>
-      <div class="how-step">
-        <span class="step-n">03</span>
-        <div class="step-icon">🎯</div>
-        <div class="step-title">Действуй</div>
-        <div class="step-desc">Получи персональные рекомендации и чёткий план — что делать дальше для достижения цели.</div>
-      </div>
-      <div class="how-step">
-        <span class="step-n">04</span>
-        <div class="step-icon">📈</div>
-        <div class="step-title">Отслеживай прогресс</div>
-        <div class="step-desc">Пересчитывай показатели раз в месяц, чтобы видеть изменения и корректировать план.</div>
-      </div>
     </div>
   </div>
 </section>
@@ -252,6 +229,5 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:40px 5%}
     <div class="footer-copy">© 2025 ПП Реалити — Калькуляторы здоровья</div>
   </div>
 </footer>
-
 </body>
 </html>
