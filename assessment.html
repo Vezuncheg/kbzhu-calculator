@@ -321,9 +321,17 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:28px 5%;
           <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           Получить план в Telegram
         </button>
-        <p style="font-size:12px;color:rgba(241,245,249,.45);text-align:center;margin-top:10px">
-          Откроется Telegram — там получишь план питания и тренировок
-        </p>
+        <div style="margin-top:14px;background:rgba(0,0,0,.2);border-radius:12px;padding:12px 14px">
+          <p style="font-size:13px;color:rgba(241,245,249,.6);line-height:1.6;margin-bottom:6px">
+            📱 <strong style="color:rgba(241,245,249,.85)">Как получить план:</strong>
+          </p>
+          <p style="font-size:12px;color:rgba(241,245,249,.5);line-height:1.7;margin:0">
+            1. Нажми кнопку выше — откроется Telegram<br>
+            2. Если видишь кнопку <strong style="color:rgba(241,245,249,.7)">"Запустить"</strong> — нажми её<br>
+            3. Если чат уже открыт — нажми <strong style="color:rgba(241,245,249,.7)">"Старт"</strong> или напиши <strong style="color:rgba(241,245,249,.7)">/start</strong><br>
+            4. Бот пришлёт твои результаты и предложит план
+          </p>
+        </div>
       </div>
     </div>
 
@@ -672,7 +680,7 @@ function selFmt(n){
   [1,2,3].forEach(i=>document.getElementById('pf'+i).classList.toggle('sel',i===n));
 }
 
-const TG_BOT = 'FitState_bot'; // замени на @username бота без @
+const TG_BOT = 'ВАШ_БОТ'; // замени на @username бота без @
 
 function generatePlan(){
   // Кодируем все данные в base64 и передаём боту через deeplink
