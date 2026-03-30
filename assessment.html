@@ -24,15 +24,15 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,10,15,0.9
 .intro-tag{font-size:12px;font-weight:600;color:var(--purple2);text-transform:uppercase;letter-spacing:2px;margin-bottom:12px}
 .intro-title{font-size:clamp(30px,6vw,52px);font-weight:900;line-height:1.08;letter-spacing:-1.5px;margin-bottom:16px}
 .intro-sub{font-size:16px;color:var(--muted);line-height:1.65;margin-bottom:32px}
-.mode-cards{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:32px}
-.mode-card{background:var(--bg2);border:1.5px solid rgba(255,255,255,.07);border-radius:16px;padding:20px 16px;cursor:pointer;transition:.2s;text-align:center;display:flex;flex-direction:column;align-items:center;gap:10px}
+.mode-cards{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:28px}
+.mode-card{background:var(--bg2);border:1.5px solid rgba(255,255,255,.07);border-radius:16px;padding:20px 14px;cursor:pointer;transition:.2s;text-align:center;display:flex;flex-direction:column;align-items:center;gap:9px}
 .mode-card:hover{border-color:rgba(124,58,237,.3)}
 .mode-card.selected{border-color:var(--purple);background:rgba(124,58,237,.12)}
-.mode-icon{font-size:28px;line-height:1}
+.mode-icon{font-size:26px;line-height:1}
 .mode-title{font-size:14px;font-weight:700}
 .mode-time{font-size:12px;color:var(--muted)}
-.mode-items{font-size:12px;color:var(--muted);line-height:1.6;text-align:left;width:100%}
-.start-btn{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;background:var(--green);color:#0a0a0f;padding:17px;border-radius:100px;font-size:16px;font-weight:800;border:none;cursor:pointer;font-family:'Inter',sans-serif;transition:.2s}
+.mode-desc{font-size:12px;color:var(--muted);line-height:1.5}
+.start-btn{width:100%;display:flex;align-items:center;justify-content:center;gap:10px;background:var(--green);color:#0a0a0f;padding:17px;border-radius:100px;font-size:16px;font-weight:800;border:none;cursor:pointer;font-family:'Inter',sans-serif;transition:.2s}
 .start-btn:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(34,197,94,.35)}
 .total-note{font-size:13px;color:var(--muted);text-align:center;margin-top:12px}
 
@@ -48,10 +48,10 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,10,15,0.9
 .ps.done{color:var(--green)}
 .ps.active{color:var(--purple2);font-weight:600}
 
-/* QUESTION */
+/* QUESTIONS */
 .q-tag{font-size:11px;font-weight:600;color:var(--purple2);text-transform:uppercase;letter-spacing:2px;margin-bottom:10px}
 .q-title{font-size:clamp(20px,4vw,30px);font-weight:900;letter-spacing:-.8px;line-height:1.15;margin-bottom:8px}
-.q-sub{font-size:14px;color:var(--muted);margin-bottom:24px;line-height:1.55}
+.q-sub{font-size:14px;color:var(--muted);margin-bottom:22px;line-height:1.55}
 .options{display:flex;flex-direction:column;gap:9px;margin-bottom:24px}
 .opt{background:var(--bg2);border:1.5px solid rgba(255,255,255,.08);border-radius:13px;padding:14px 16px;cursor:pointer;transition:.2s;display:flex;align-items:center;gap:13px;font-size:14px;font-weight:500;color:var(--text)}
 .opt:hover{border-color:rgba(124,58,237,.4)}
@@ -66,6 +66,16 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,10,15,0.9
 .opt-card-icon{font-size:26px;line-height:1}
 .opt-card-title{font-size:14px;font-weight:600}
 .opt-card-hint{font-size:12px;color:var(--muted);font-weight:400}
+/* MULTI SELECT */
+.opt-multi{background:var(--bg2);border:1.5px solid rgba(255,255,255,.08);border-radius:13px;padding:14px 16px;cursor:pointer;transition:.2s;display:flex;align-items:center;gap:13px;font-size:14px;font-weight:500;color:var(--text)}
+.opt-multi:hover{border-color:rgba(124,58,237,.4)}
+.opt-multi.selected{border-color:var(--purple);background:rgba(124,58,237,.14)}
+.multi-check{width:20px;height:20px;border-radius:6px;border:1.5px solid rgba(255,255,255,.2);flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:.2s}
+.opt-multi.selected .multi-check{background:var(--purple);border-color:var(--purple)}
+.multi-check-inner{width:10px;height:10px;background:#fff;border-radius:3px;display:none}
+.opt-multi.selected .multi-check-inner{display:block}
+.multi-hint{font-size:12px;color:var(--muted);margin-bottom:16px;margin-top:-14px}
+/* INPUTS */
 .input-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:24px}
 .inp-wrap{display:flex;flex-direction:column;gap:7px}
 .inp-wrap label{font-size:13px;color:var(--muted);font-weight:500}
@@ -73,6 +83,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,10,15,0.9
 .inp-wrap input:focus{border-color:var(--purple)}
 .inp-wrap input::placeholder{color:rgba(148,163,184,.35)}
 .inp-hint{font-size:11px;color:rgba(148,163,184,.5);margin-top:2px}
+/* SLIDER */
 .slider-wrap{margin-bottom:24px}
 .slider-labels{display:flex;justify-content:space-between;font-size:12px;color:var(--muted);margin-bottom:8px}
 input[type=range]{width:100%;-webkit-appearance:none;height:6px;border-radius:100px;background:rgba(255,255,255,.1);outline:none}
@@ -80,8 +91,8 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:22px;heigh
 .slider-value{text-align:center;font-size:24px;font-weight:900;color:var(--purple2);margin-top:10px}
 .slider-desc{text-align:center;font-size:13px;color:var(--muted);margin-top:3px}
 
-/* NAV BTNS */
-.q-nav{display:flex;gap:12px;align-items:center}
+/* NAV */
+.q-nav{display:flex;gap:12px;align-items:center;margin-top:8px}
 .btn-next{flex:1;padding:15px;background:var(--green);color:#0a0a0f;border:none;border-radius:100px;font-size:15px;font-weight:800;cursor:pointer;font-family:'Inter',sans-serif;transition:.2s;display:flex;align-items:center;justify-content:center;gap:8px}
 .btn-next:hover:not(:disabled){transform:translateY(-1px);box-shadow:0 6px 24px rgba(34,197,94,.3)}
 .btn-next:disabled{opacity:.3;cursor:not-allowed}
@@ -90,63 +101,75 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:22px;heigh
 .q-counter{font-size:12px;color:var(--muted);min-width:44px;text-align:center}
 
 /* RESULT */
-.result-section{margin-bottom:28px}
-.rs-label{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:2px;margin-bottom:14px;padding:6px 14px;border-radius:100px;display:inline-block}
+.rs-label{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:2px;margin-bottom:14px;padding:5px 14px;border-radius:100px;display:inline-block}
 .rs-label.purple{background:rgba(124,58,237,.15);color:var(--purple2)}
 .rs-label.blue{background:rgba(59,130,246,.15);color:#60a5fa}
 .rs-label.green{background:rgba(34,197,94,.15);color:var(--green)}
-.rs-label.amber{background:rgba(245,158,11,.15);color:var(--amber)}
-
-/* NUMBERS GRID */
-.numbers-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px}
+.numbers-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px}
 .num-card{background:var(--bg2);border:1px solid rgba(255,255,255,.07);border-radius:14px;padding:18px}
 .num-label{font-size:12px;color:var(--muted);margin-bottom:5px;line-height:1.4}
-.num-value{font-size:26px;font-weight:900}
-.num-value.purple{color:var(--purple2)}
-.num-value.green{color:var(--green)}
-.num-value.blue{color:var(--blue)}
-.num-value.amber{color:var(--amber)}
+.num-value{font-size:24px;font-weight:900}
 .num-sub{font-size:12px;color:var(--muted);margin-top:3px}
 .macro-row{display:flex;align-items:center;gap:12px;padding:13px 16px;background:var(--bg2);border-radius:12px;margin-bottom:8px}
 .macro-bar-color{width:4px;height:36px;border-radius:4px;flex-shrink:0}
-.macro-info{flex:1}
 .macro-name{font-size:13px;font-weight:600}
 .macro-g{font-size:20px;font-weight:900}
 .macro-kcal{font-size:12px;color:var(--muted)}
 .fat-bar-wrap{background:var(--bg2);border-radius:14px;padding:18px;margin-bottom:12px}
-.fat-bar-title{font-size:13px;font-weight:600;margin-bottom:12px}
 .fat-bar{height:9px;border-radius:100px;background:linear-gradient(90deg,#3b82f6 0%,#22c55e 20%,#a855f7 42%,#f59e0b 62%,#ef4444 82%,#dc2626 100%);position:relative;margin-bottom:7px}
 .fat-marker{position:absolute;top:-5px;width:19px;height:19px;background:#fff;border-radius:50%;transform:translateX(-50%);border:3px solid var(--bg);box-shadow:0 0 0 2px var(--purple2)}
 .fat-bar-labels{display:flex;justify-content:space-between;font-size:10px;color:var(--muted)}
-.cat-badge{display:inline-flex;align-items:center;gap:7px;padding:8px 16px;border-radius:100px;font-size:13px;font-weight:600;margin-bottom:8px}
-
-/* PROFILE */
+.cat-badge{display:inline-flex;align-items:center;gap:7px;padding:7px 14px;border-radius:100px;font-size:13px;font-weight:600;margin-top:8px}
 .profile-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px}
 .profile-cell{background:var(--bg2);border:1px solid rgba(255,255,255,.07);border-radius:14px;padding:16px}
 .pc-label{font-size:12px;color:var(--muted);margin-bottom:5px}
 .pc-value{font-size:15px;font-weight:700;line-height:1.3}
-.tags-row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}
+.tags-row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px}
 .r-tag{font-size:12px;padding:5px 13px;border-radius:100px;font-weight:500}
 .t-purple{background:rgba(168,85,247,.15);color:var(--purple2);border:1px solid rgba(168,85,247,.2)}
 .t-blue{background:rgba(59,130,246,.15);color:#60a5fa;border:1px solid rgba(59,130,246,.2)}
 .t-green{background:rgba(34,197,94,.15);color:var(--green);border:1px solid rgba(34,197,94,.2)}
 .t-amber{background:rgba(245,158,11,.15);color:var(--amber);border:1px solid rgba(245,158,11,.2)}
+.section-divider{height:1px;background:rgba(255,255,255,.06);margin:28px 0}
 
 /* PLAN CTA */
-.plan-card{background:linear-gradient(135deg,rgba(124,58,237,.2),rgba(59,130,246,.14));border:1px solid rgba(124,58,237,.3);border-radius:20px;padding:26px;margin-bottom:16px}
-.plan-card h3{font-size:19px;font-weight:800;margin-bottom:8px}
-.plan-card p{font-size:14px;color:rgba(241,245,249,.7);line-height:1.6;margin-bottom:18px}
-.plan-options{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:18px}
-.plan-opt{background:rgba(0,0,0,.25);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:13px 10px;text-align:center;cursor:pointer;transition:.2s}
-.plan-opt:hover,.plan-opt.sel{border-color:var(--green);background:rgba(34,197,94,.1)}
-.plan-opt-icon{font-size:20px;margin-bottom:5px}
-.plan-opt-name{font-size:13px;font-weight:600}
-.plan-btn{width:100%;padding:16px;background:var(--green);color:#0a0a0f;border:none;border-radius:100px;font-size:15px;font-weight:800;cursor:pointer;font-family:'Inter',sans-serif;transition:.2s;display:flex;align-items:center;justify-content:center;gap:8px}
-.plan-btn:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(34,197,94,.35)}
+.plan-cta-card{background:linear-gradient(135deg,rgba(124,58,237,.2),rgba(59,130,246,.14));border:1px solid rgba(124,58,237,.3);border-radius:20px;padding:26px;margin-bottom:20px}
+.plan-cta-card h3{font-size:19px;font-weight:800;margin-bottom:8px}
+.plan-cta-card p{font-size:14px;color:rgba(241,245,249,.7);line-height:1.6;margin-bottom:18px}
+.plan-format-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:18px}
+.plan-fmt{background:rgba(0,0,0,.25);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:13px 10px;text-align:center;cursor:pointer;transition:.2s}
+.plan-fmt:hover,.plan-fmt.sel{border-color:var(--green);background:rgba(34,197,94,.1)}
+.plan-fmt-icon{font-size:20px;margin-bottom:5px}
+.plan-fmt-name{font-size:13px;font-weight:600}
+.gen-btn{width:100%;padding:16px;background:var(--green);color:#0a0a0f;border:none;border-radius:100px;font-size:15px;font-weight:800;cursor:pointer;font-family:'Inter',sans-serif;transition:.2s;display:flex;align-items:center;justify-content:center;gap:8px}
+.gen-btn:hover:not(:disabled){transform:translateY(-2px);box-shadow:0 8px 32px rgba(34,197,94,.35)}
+.gen-btn:disabled{opacity:.5;cursor:not-allowed}
+
+/* PLAN OUTPUT */
+.plan-output{background:var(--bg2);border:1px solid var(--border);border-radius:20px;padding:28px;margin-top:20px}
+.plan-loading{text-align:center;padding:32px 0}
+.plan-spinner{width:36px;height:36px;border:3px solid rgba(124,58,237,.2);border-top-color:var(--purple2);border-radius:50%;animation:spin 1s linear infinite;margin:0 auto 14px}
+@keyframes spin{to{transform:rotate(360deg)}}
+.plan-loading-text{font-size:14px;color:var(--muted)}
+.plan-content{font-size:14px;line-height:1.75;color:var(--text)}
+.plan-content h2{font-size:18px;font-weight:800;margin:22px 0 10px;color:var(--purple2)}
+.plan-content h2:first-child{margin-top:0}
+.plan-content h3{font-size:15px;font-weight:700;margin:16px 0 8px;color:var(--text)}
+.plan-content p{margin-bottom:10px;color:rgba(241,245,249,.85)}
+.plan-content ul,.plan-content ol{padding-left:20px;margin-bottom:10px}
+.plan-content li{margin-bottom:5px;color:rgba(241,245,249,.8)}
+.plan-content strong{color:var(--text);font-weight:600}
+.plan-content hr{border:none;border-top:1px solid rgba(255,255,255,.07);margin:18px 0}
+.plan-actions{display:flex;gap:10px;margin-top:20px;flex-wrap:wrap}
+.btn-copy{flex:1;padding:13px;background:transparent;color:var(--muted);border:1.5px solid rgba(255,255,255,.12);border-radius:100px;font-size:14px;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;transition:.2s}
+.btn-copy:hover{color:var(--text);border-color:rgba(255,255,255,.25)}
+.btn-regen{flex:1;padding:13px;background:rgba(124,58,237,.15);color:var(--purple2);border:1.5px solid rgba(124,58,237,.25);border-radius:100px;font-size:14px;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;transition:.2s}
+.btn-regen:hover{background:rgba(124,58,237,.25)}
+
 .hidden{display:none}
 footer{background:var(--bg2);border-top:1px solid var(--border);padding:28px 5%;text-align:center;margin-top:40px}
 .footer-copy{font-size:13px;color:var(--muted)}
-@media(max-width:540px){.mode-cards{grid-template-columns:1fr}.numbers-grid{grid-template-columns:1fr}.profile-grid{grid-template-columns:1fr}.plan-options{grid-template-columns:1fr}.opts-grid{grid-template-columns:1fr}.input-grid{grid-template-columns:1fr}}
+@media(max-width:540px){.mode-cards{grid-template-columns:1fr}.numbers-grid{grid-template-columns:1fr}.profile-grid{grid-template-columns:1fr}.plan-format-grid{grid-template-columns:1fr}.opts-grid{grid-template-columns:1fr}.input-grid{grid-template-columns:1fr}.plan-actions{flex-direction:column}}
 </style>
 </head>
 <body>
@@ -169,29 +192,27 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:28px 5%;
 <div id="screen-intro" style="padding-top:36px">
   <div class="intro-tag">Персональный ассессмент</div>
   <h1 class="intro-title">Узнай себя<br>за <span style="background:linear-gradient(90deg,#a855f7,#3b82f6);-webkit-background-clip:text;-webkit-text-fill-color:transparent">7 минут</span></h1>
-  <p class="intro-sub">Выбери формат — от быстрых расчётов до полного профиля с планом.</p>
-
-  <div class="mode-cards" id="mode-cards">
+  <p class="intro-sub">Выбери формат — от быстрых расчётов до полного профиля с AI-планом.</p>
+  <div class="mode-cards">
     <div class="mode-card" id="mc-calc" onclick="selectMode('calc')">
       <div class="mode-icon">🧮</div>
       <div class="mode-title">Только расчёты</div>
       <div class="mode-time">⏱ ~2 мин</div>
-      <div class="mode-items">% жира, BMR, КБЖУ и вода — только цифры</div>
+      <div class="mode-desc">% жира, BMR, КБЖУ — только цифры</div>
     </div>
     <div class="mode-card" id="mc-tests" onclick="selectMode('tests')">
       <div class="mode-icon">📋</div>
       <div class="mode-title">Только тесты</div>
       <div class="mode-time">⏱ ~4 мин</div>
-      <div class="mode-items">Образ жизни, фитнес, мотивация — типаж</div>
+      <div class="mode-desc">Образ жизни, фитнес, мотивация</div>
     </div>
     <div class="mode-card selected" id="mc-full" onclick="selectMode('full')">
       <div class="mode-icon">👤</div>
       <div class="mode-title">Полный профиль</div>
       <div class="mode-time">⏱ ~7 мин</div>
-      <div class="mode-items">Расчёты + тесты + план действий</div>
+      <div class="mode-desc">Расчёты + тесты + AI-план</div>
     </div>
   </div>
-
   <button class="start-btn" onclick="startAssessment()">
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
     <span id="start-label">Начать полный профиль</span>
@@ -210,7 +231,7 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:28px 5%;
     <div class="progress-steps" id="prog-steps"></div>
   </div>
   <div id="questions-wrap"></div>
-  <div class="q-nav" id="q-nav">
+  <div class="q-nav">
     <button class="btn-back" id="btn-back" onclick="prevQ()">← Назад</button>
     <div class="q-counter" id="q-counter"></div>
     <button class="btn-next" id="btn-next" onclick="nextQ()" disabled>
@@ -222,97 +243,88 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:28px 5%;
 <!-- RESULT -->
 <div id="screen-result" class="hidden">
   <div style="padding-top:16px">
-    <div class="intro-tag" style="background:rgba(34,197,94,.12);border-color:rgba(34,197,94,.3);color:var(--green)">Профиль готов</div>
-    <h2 style="font-size:clamp(26px,5vw,42px);font-weight:900;letter-spacing:-1.5px;margin-bottom:6px">Твои результаты</h2>
-    <p style="font-size:15px;color:var(--muted);margin-bottom:36px;line-height:1.6" id="result-intro"></p>
+    <div class="intro-tag" style="background:rgba(34,197,94,.12);border:1px solid rgba(34,197,94,.3);display:inline-block;border-radius:100px;padding:5px 14px;color:var(--green)">Профиль готов</div>
+    <h2 style="font-size:clamp(26px,5vw,42px);font-weight:900;letter-spacing:-1.5px;margin:10px 0 6px">Твои результаты</h2>
+    <p style="font-size:15px;color:var(--muted);margin-bottom:32px;line-height:1.6" id="result-intro"></p>
 
-    <!-- SECTION 1: NUMBERS -->
-    <div class="result-section" id="rs-numbers" style="display:none">
-      <div class="rs-label purple">🔢 Твои цифры по телу</div>
-
-      <div class="fat-bar-wrap" id="fat-bar-section" style="display:none">
-        <div class="fat-bar-title">Процент жира</div>
-        <div class="fat-bar"><div class="fat-marker" id="fat-marker"></div></div>
-        <div class="fat-bar-labels"><span>3%</span><span>10%</span><span>18%</span><span>25%</span><span>35%</span><span>45%</span></div>
-        <div style="margin-top:10px;display:flex;align-items:center;gap:10px;flex-wrap:wrap">
-          <span class="cat-badge" id="fat-cat-badge"></span>
-          <span style="font-size:13px;color:var(--muted)" id="fat-cat-desc"></span>
+    <!-- NUMBERS -->
+    <div id="rs-numbers" class="hidden">
+      <div class="rs-label purple">🔢 Цифры по телу</div>
+      <div id="fat-bar-section" class="hidden">
+        <div class="fat-bar-wrap">
+          <div style="font-size:13px;font-weight:600;margin-bottom:12px">Процент жира в теле</div>
+          <div class="fat-bar"><div class="fat-marker" id="fat-marker"></div></div>
+          <div class="fat-bar-labels"><span>3%</span><span>10%</span><span>18%</span><span>25%</span><span>35%</span><span>45%</span></div>
+          <div style="margin-top:8px"><span class="cat-badge" id="fat-cat-badge"></span></div>
         </div>
       </div>
-
       <div class="numbers-grid">
         <div class="num-card" id="nc-fat" style="display:none">
-          <div class="num-label">% жира в теле</div>
-          <div class="num-value purple" id="r-fat-pct">—</div>
+          <div class="num-label">Процент жира</div>
+          <div class="num-value" style="color:var(--purple2)" id="r-fat-pct">—</div>
           <div class="num-sub" id="r-fat-mass"></div>
         </div>
         <div class="num-card">
           <div class="num-label">ИМТ</div>
-          <div class="num-value blue" id="r-bmi">—</div>
+          <div class="num-value" style="color:var(--blue)" id="r-bmi">—</div>
           <div class="num-sub" id="r-bmi-cat"></div>
         </div>
         <div class="num-card">
-          <div class="num-label">Базовый метаболизм BMR</div>
-          <div class="num-value purple" id="r-bmr">—</div>
-          <div class="num-sub">ккал в полном покое</div>
+          <div class="num-label">Базовый метаболизм</div>
+          <div class="num-value" style="color:var(--purple2)" id="r-bmr">—</div>
+          <div class="num-sub">ккал в покое</div>
         </div>
         <div class="num-card">
-          <div class="num-label">Суточная норма калорий</div>
-          <div class="num-value green" id="r-kcal">—</div>
+          <div class="num-label">Норма калорий / день</div>
+          <div class="num-value" style="color:var(--green)" id="r-kcal">—</div>
           <div class="num-sub" id="r-kcal-sub"></div>
         </div>
       </div>
-
       <div style="margin-bottom:16px">
-        <div style="font-size:14px;font-weight:600;margin-bottom:10px;color:var(--muted)">Норма БЖУ в день</div>
-        <div class="macro-row">
-          <div class="macro-bar-color" style="background:#185FA5"></div>
-          <div class="macro-info"><div class="macro-name">Белки</div><div class="macro-g" id="r-prot">—</div><div class="macro-kcal" id="r-prot-k"></div></div>
-        </div>
-        <div class="macro-row">
-          <div class="macro-bar-color" style="background:#0F6E56"></div>
-          <div class="macro-info"><div class="macro-name">Жиры</div><div class="macro-g" id="r-fat2">—</div><div class="macro-kcal" id="r-fat-k"></div></div>
-        </div>
-        <div class="macro-row">
-          <div class="macro-bar-color" style="background:#BA7517"></div>
-          <div class="macro-info"><div class="macro-name">Углеводы</div><div class="macro-g" id="r-carb">—</div><div class="macro-kcal" id="r-carb-k"></div></div>
-        </div>
+        <div style="font-size:13px;font-weight:600;color:var(--muted);margin-bottom:10px">Норма БЖУ в день</div>
+        <div class="macro-row"><div class="macro-bar-color" style="background:#185FA5"></div><div><div class="macro-name">Белки</div><div class="macro-g" id="r-prot">—</div><div class="macro-kcal" id="r-prot-k"></div></div></div>
+        <div class="macro-row"><div class="macro-bar-color" style="background:#0F6E56"></div><div><div class="macro-name">Жиры</div><div class="macro-g" id="r-fat2">—</div><div class="macro-kcal" id="r-fat-k"></div></div></div>
+        <div class="macro-row"><div class="macro-bar-color" style="background:#BA7517"></div><div><div class="macro-name">Углеводы</div><div class="macro-g" id="r-carb">—</div><div class="macro-kcal" id="r-carb-k"></div></div></div>
       </div>
-
-      <div style="background:rgba(59,130,246,.08);border:1px solid rgba(59,130,246,.2);border-radius:14px;padding:16px 20px;display:flex;align-items:center;gap:16px">
+      <div style="background:rgba(59,130,246,.08);border:1px solid rgba(59,130,246,.2);border-radius:14px;padding:16px 20px;display:flex;align-items:center;gap:16px;margin-bottom:4px">
         <span style="font-size:28px">💧</span>
-        <div>
-          <div style="font-size:22px;font-weight:900;color:var(--blue)" id="r-water">—</div>
-          <div style="font-size:13px;color:var(--muted)" id="r-water-sub"></div>
-        </div>
+        <div><div style="font-size:22px;font-weight:900;color:var(--blue)" id="r-water">—</div><div style="font-size:13px;color:var(--muted)" id="r-water-sub"></div></div>
       </div>
+      <div class="section-divider"></div>
     </div>
 
-    <!-- SECTION 2: PROFILE -->
-    <div class="result-section" id="rs-profile" style="display:none;margin-top:32px">
+    <!-- PROFILE -->
+    <div id="rs-profile" class="hidden">
       <div class="rs-label blue">👤 Твой профиль</div>
       <div class="profile-grid">
         <div class="profile-cell"><div class="pc-label">Тип питания</div><div class="pc-value" style="color:var(--purple2)" id="r-eating">—</div></div>
         <div class="profile-cell"><div class="pc-label">Уровень подготовки</div><div class="pc-value" style="color:var(--blue)" id="r-fitness">—</div></div>
-        <div class="profile-cell"><div class="pc-label">Тип мотивации</div><div class="pc-value" style="color:var(--green)" id="r-motivation">—</div></div>
+        <div class="profile-cell"><div class="pc-label">Что мотивирует</div><div class="pc-value" style="color:var(--green);font-size:13px" id="r-motivation">—</div></div>
         <div class="profile-cell"><div class="pc-label">Подход к плану</div><div class="pc-value" style="color:var(--amber)" id="r-style">—</div></div>
       </div>
       <div class="tags-row" id="tags-row"></div>
+      <div class="section-divider"></div>
     </div>
 
-    <!-- SECTION 3: PLAN CTA -->
-    <div class="plan-card" id="rs-plan" style="display:none">
-      <h3>Получи персональный план</h3>
-      <p id="plan-desc">На основе твоего профиля подготовим план питания и тренировок.</p>
-      <div class="plan-options">
-        <div class="plan-opt sel" id="po1" onclick="selPlan(1)"><div class="plan-opt-icon">🏋️</div><div class="plan-opt-name">Зал</div></div>
-        <div class="plan-opt" id="po2" onclick="selPlan(2)"><div class="plan-opt-icon">🏠</div><div class="plan-opt-name">Дома</div></div>
-        <div class="plan-opt" id="po3" onclick="selPlan(3)"><div class="plan-opt-icon">🔀</div><div class="plan-opt-name">Комбо</div></div>
+    <!-- PLAN CTA -->
+    <div id="rs-plan" class="hidden">
+      <div class="rs-label green">🎯 Персональный план</div>
+      <div class="plan-cta-card">
+        <h3>Составить план питания и тренировок</h3>
+        <p id="plan-desc">AI составит план специально под твои данные, цель и образ жизни.</p>
+        <div class="plan-format-grid">
+          <div class="plan-fmt sel" id="pf1" onclick="selFmt(1)"><div class="plan-fmt-icon">🏋️</div><div class="plan-fmt-name">Зал</div></div>
+          <div class="plan-fmt" id="pf2" onclick="selFmt(2)"><div class="plan-fmt-icon">🏠</div><div class="plan-fmt-name">Дома</div></div>
+          <div class="plan-fmt" id="pf3" onclick="selFmt(3)"><div class="plan-fmt-icon">🔀</div><div class="plan-fmt-name">Комбо</div></div>
+        </div>
+        <button class="gen-btn" id="gen-btn" onclick="generatePlan()">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          Получить план в Telegram
+        </button>
+        <p style="font-size:12px;color:rgba(241,245,249,.45);text-align:center;margin-top:10px">
+          Откроется Telegram — там получишь план питания и тренировок
+        </p>
       </div>
-      <button class="plan-btn" onclick="alert('Скоро!')">
-        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        Составить мой план
-      </button>
     </div>
 
   </div>
@@ -322,181 +334,183 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:28px 5%;
 <footer><div class="footer-copy">© 2025 ПП Реалити</div></footer>
 
 <script>
-let mode = 'full';
-let curQ = 0;
-let answers = {};
+let mode='full', curQ=0, answers={}, planFormat=1, planText='';
 
-const BLOCKS_FULL  = ['🔥 Тело','🌙 Образ жизни','💪 Фитнес','🎯 Мотивация'];
-const BLOCKS_CALC  = ['🔥 Тело'];
-const BLOCKS_TESTS = ['🌙 Образ жизни','💪 Фитнес','🎯 Мотивация'];
-
-const Q_BODY = [
-  {block:0, id:'gender', tag:'Блок 1 — Тело', title:'Укажи свой пол', sub:'Влияет на все расчёты состава тела.', type:'cards', opts:[
+const Q_BODY=[
+  {block:0,id:'gender',tag:'Блок 1 — Тело',title:'Укажи свой пол',sub:'Влияет на все расчёты состава тела.',type:'cards',opts:[
     {icon:'♂️',title:'Мужской',val:'m'},{icon:'♀️',title:'Женский',val:'f'}]},
-  {block:0, id:'goal', tag:'Блок 1 — Тело', title:'Какая твоя основная цель?', sub:'Под неё рассчитаем калорийность.', type:'cards', opts:[
+  {block:0,id:'goal',tag:'Блок 1 — Тело',title:'Какая твоя основная цель?',sub:'Под неё рассчитаем калорийность.',type:'cards',opts:[
     {icon:'📉',title:'Похудеть',hint:'Снизить % жира',val:'loss'},
     {icon:'⚖️',title:'Поддержать',hint:'Сохранить форму',val:'maintain'},
     {icon:'📈',title:'Набрать массу',hint:'Мышцы и сила',val:'gain'},
-    {icon:'❤️',title:'Здоровье',hint:'Самочувствие',val:'health'}]},
-  {block:0, id:'params', tag:'Блок 1 — Тело', title:'Основные параметры', sub:'Для расчёта BMR, ИМТ и нормы КБЖУ.', type:'inputs', fields:[
+    {icon:'❤️',title:'Здоровье',hint:'Самочувствие и энергия',val:'health'}]},
+  {block:0,id:'params',tag:'Блок 1 — Тело',title:'Основные параметры',sub:'Для расчёта BMR, ИМТ и нормы КБЖУ.',type:'inputs',fields:[
     {id:'age',label:'Возраст, лет',placeholder:'25',min:10,max:100},
     {id:'height',label:'Рост, см',placeholder:'175',min:100,max:250},
     {id:'weight',label:'Вес, кг',placeholder:'70',min:30,max:300}]},
-  {block:0, id:'measures', tag:'Блок 1 — Тело', title:'Замеры для % жира', sub:'По формуле ВМС США — измерь сантиметровой лентой.', type:'inputs', fields:[
+  {block:0,id:'measures',tag:'Блок 1 — Тело',title:'Замеры для расчёта % жира',sub:'Измерь сантиметровой лентой — это займёт 1 минуту.',type:'inputs',fields:[
     {id:'neck',label:'Обхват шеи, см',placeholder:'37',hint:'В самом узком месте',min:20,max:80},
     {id:'waist',label:'Обхват талии, см',placeholder:'80',hint:'На уровне пупка',min:40,max:200},
     {id:'hips',label:'Обхват бёдер, см',placeholder:'95',hint:'Только для женщин — в самом широком месте',min:40,max:200,femaleOnly:true}]},
-  {block:0, id:'activity', tag:'Блок 1 — Тело', title:'Насколько ты активен?', sub:'Оцени свой обычный день честно.', type:'list', opts:[
+  {block:0,id:'activity',tag:'Блок 1 — Тело',title:'Насколько ты активен?',sub:'Оцени свой обычный день честно.',type:'list',opts:[
     {icon:'🛋️',title:'Почти не двигаюсь',hint:'Сидячая работа, без спорта',val:'1.2'},
     {icon:'🚶',title:'Хожу пешком',hint:'5–8 тыс. шагов в день',val:'1.375'},
     {icon:'🚴',title:'Тренируюсь 3–4 раза',hint:'Умеренная нагрузка',val:'1.55'},
     {icon:'🏋️',title:'Тренируюсь каждый день',hint:'Интенсивные нагрузки',val:'1.725'}]},
 ];
 
-const Q_TESTS = [
-  {block:1, id:'sleep', tag:'Образ жизни', title:'Как у тебя со сном?', sub:'Сон влияет на вес, гормоны и восстановление.', type:'list', opts:[
+const Q_TESTS=[
+  {block:1,id:'sleep',tag:'Образ жизни',title:'Как у тебя со сном?',sub:'Сон влияет на вес, гормоны и восстановление.',type:'list',opts:[
     {icon:'😴',title:'Меньше 6 часов',hint:'Постоянно не высыпаюсь',val:'bad'},
     {icon:'🌙',title:'6–7 часов',hint:'Иногда не хватает',val:'ok'},
     {icon:'✨',title:'7–8 часов',hint:'Сплю нормально',val:'good'},
     {icon:'🌟',title:'Больше 8 часов',hint:'Высыпаюсь с запасом',val:'great'}]},
-  {block:1, id:'stress', tag:'Образ жизни', title:'Уровень стресса', sub:'Хронический стресс повышает кортизол и мешает похудению.', type:'slider', min:1, max:5,
+  {block:1,id:'stress',tag:'Образ жизни',title:'Уровень стресса в жизни',sub:'Хронический стресс повышает кортизол и мешает похудению.',type:'slider',min:1,max:5,
     labels:['Нет стресса','Очень высокий'],
     descs:['Всё спокойно — отличный фон для прогресса','Небольшой стресс — норма современной жизни','Умеренный стресс — добавь восстановление','Высокий стресс — приоритет на режим и сон','Очень высокий — сначала нужно разгрузиться']},
-  {block:1, id:'eating', tag:'Образ жизни', title:'Как питаешься сейчас?', sub:'Честно — без осуждений.', type:'list', opts:[
+  {block:1,id:'eating',tag:'Образ жизни',title:'Как питаешься сейчас?',sub:'Честно — без осуждений.',type:'list',opts:[
     {icon:'🎲',title:'Хаотично',hint:'Ем когда придётся',val:'chaos'},
     {icon:'🕐',title:'По режиму',hint:'Примерно в одно время',val:'schedule'},
     {icon:'⚡',title:'Пропускаю приёмы',hint:'Часто не завтракаю',val:'skip'},
     {icon:'🥗',title:'Слежу за питанием',hint:'Считаю или придерживаюсь правил',val:'track'}]},
-  {block:1, id:'cook', tag:'Образ жизни', title:'Сколько раз в неделю готовишь?', sub:'Для реалистичного плана питания.', type:'cards', opts:[
+  {block:1,id:'cook',tag:'Образ жизни',title:'Сколько раз в неделю готовишь?',sub:'Для реалистичного плана питания.',type:'cards',opts:[
     {icon:'🚫',title:'Почти никогда',val:'never'},
     {icon:'🍳',title:'1–3 раза',val:'sometimes'},
     {icon:'🥘',title:'4–6 раз',val:'often'},
     {icon:'👨‍🍳',title:'Каждый день',val:'always'}]},
-  {block:2, id:'fitness_lvl', tag:'Фитнес', title:'Оцени свою подготовку', sub:'Честная оценка = подходящая программа.', type:'list', opts:[
+  {block:2,id:'fitness_lvl',tag:'Фитнес',title:'Оцени свою физподготовку',sub:'Честная оценка = подходящая программа.',type:'list',opts:[
     {icon:'🌱',title:'Новичок',hint:'Давно не тренировался или вообще не начинал',val:'beginner'},
     {icon:'🔵',title:'Базовый уровень',hint:'Иногда хожу в зал',val:'basic'},
     {icon:'🟡',title:'Средний уровень',hint:'Регулярно тренируюсь 3+ месяца',val:'intermediate'},
     {icon:'🔴',title:'Продвинутый',hint:'Серьёзные тренировки 1+ год',val:'advanced'}]},
-  {block:2, id:'injuries', tag:'Фитнес', title:'Есть травмы или ограничения?', sub:'Учтём при составлении программы.', type:'cards', opts:[
+  {block:2,id:'injuries',tag:'Фитнес',title:'Есть травмы или ограничения?',sub:'Учтём при составлении программы.',type:'cards',opts:[
     {icon:'✅',title:'Нет, всё ок',val:'none'},
     {icon:'🦵',title:'Колени / ноги',val:'legs'},
     {icon:'💪',title:'Спина / плечи',val:'back'},
     {icon:'⚠️',title:'Другое',val:'other'}]},
-  {block:2, id:'place', tag:'Фитнес', title:'Где планируешь тренироваться?', sub:'Составим программу под твои условия.', type:'cards', opts:[
+  {block:2,id:'place',tag:'Фитнес',title:'Где планируешь тренироваться?',sub:'Составим программу под твои условия.',type:'cards',opts:[
     {icon:'🏋️',title:'В зале',val:'gym'},
     {icon:'🏠',title:'Дома',val:'home'},
     {icon:'🌳',title:'На улице',val:'outdoor'},
     {icon:'🔀',title:'По-разному',val:'mix'}]},
-  {block:3, id:'drive', tag:'Мотивация', title:'Что мотивирует тебя больше?', sub:'Выстроим правильный фокус.', type:'cards', opts:[
+  {block:3,id:'drive',tag:'Мотивация',title:'Что тебя мотивирует?',sub:'Можно выбрать несколько вариантов.',type:'multi',opts:[
     {icon:'🪞',title:'Внешний вид',val:'look'},
     {icon:'⚡',title:'Энергия и здоровье',val:'energy'},
     {icon:'🏆',title:'Спортивный результат',val:'sport'},
-    {icon:'😊',title:'Самочувствие',val:'feel'}]},
-  {block:3, id:'fail_reason', tag:'Мотивация', title:'Почему раньше не получалось?', sub:'Если впервые — что беспокоит больше всего.', type:'list', opts:[
+    {icon:'😊',title:'Самочувствие',val:'feel'},
+    {icon:'💪',title:'Сила и выносливость',val:'strength'},
+    {icon:'🧘',title:'Стресс и баланс',val:'balance'}]},
+  {block:3,id:'fail_reason',tag:'Мотивация',title:'Почему раньше не получалось?',sub:'Если впервые — что беспокоит больше всего.',type:'list',opts:[
     {icon:'🍕',title:'Срывался в питании',hint:'Сложно держать диету долго',val:'diet'},
     {icon:'⏰',title:'Не хватало времени',hint:'Работа, семья, дела',val:'time'},
     {icon:'😕',title:'Не было результата',hint:'Делал, но эффекта не видел',val:'noresult'},
     {icon:'🆕',title:'Пробую впервые',val:'first'}]},
-  {block:3, id:'style', tag:'Мотивация', title:'Какой подход тебе ближе?', sub:'Определит стиль твоего плана.', type:'list', opts:[
+  {block:3,id:'style',tag:'Мотивация',title:'Какой подход тебе ближе?',sub:'Определит стиль твоего плана.',type:'list',opts:[
     {icon:'📋',title:'Чёткий план по дням',hint:'Хочу знать что делать каждый день',val:'strict'},
     {icon:'🎯',title:'Принципы и гибкость',hint:'Понять систему, адаптировать под себя',val:'flexible'},
     {icon:'🤝',title:'С поддержкой',hint:'Важен контроль и обратная связь',val:'support'},
     {icon:'🔬',title:'Научный подход',hint:'Хочу понимать зачем каждый шаг',val:'science'}]},
 ];
 
-let QUESTIONS = [];
+let QUESTIONS=[];
 
 function selectMode(m){
-  mode = m;
+  mode=m;
   ['calc','tests','full'].forEach(x=>document.getElementById('mc-'+x).classList.remove('selected'));
   document.getElementById('mc-'+m).classList.add('selected');
-  const labels = {calc:'Начать расчёты — ~2 мин', tests:'Начать тесты — ~4 мин', full:'Начать полный профиль — ~7 мин'};
-  const notes  = {calc:'5 вопросов · только цифры', tests:'10 вопросов · только тесты', full:'14 вопросов · всё сразу'};
-  document.getElementById('start-label').textContent = labels[m];
-  document.getElementById('total-note').textContent  = notes[m];
+  const labels={calc:'Начать расчёты — ~2 мин',tests:'Начать тесты — ~4 мин',full:'Начать полный профиль — ~7 мин'};
+  const notes={calc:'5 вопросов · только цифры',tests:'10 вопросов · только тесты',full:'14 вопросов · расчёты + профиль + AI-план'};
+  document.getElementById('start-label').textContent=labels[m];
+  document.getElementById('total-note').textContent=notes[m];
 }
 
 function startAssessment(){
-  if(mode==='calc')       QUESTIONS = [...Q_BODY];
-  else if(mode==='tests') QUESTIONS = [...Q_TESTS];
-  else                    QUESTIONS = [...Q_BODY, ...Q_TESTS];
-
-  // hide hips for male
-  answers = {};
-  curQ = 0;
+  QUESTIONS = mode==='calc' ? [...Q_BODY] : mode==='tests' ? [...Q_TESTS] : [...Q_BODY,...Q_TESTS];
+  answers={}; curQ=0;
   document.getElementById('screen-intro').classList.add('hidden');
   document.getElementById('screen-assessment').classList.remove('hidden');
-  buildProgressSteps();
+  buildSteps();
   renderQ();
 }
 
-function buildProgressSteps(){
-  let blocks = [];
-  if(mode==='calc')       blocks = ['🔥 Тело'];
-  else if(mode==='tests') blocks = ['🌙 Образ жизни','💪 Фитнес','🎯 Мотивация'];
-  else                    blocks = ['🔥 Тело','🌙 Образ жизни','💪 Фитнес','🎯 Мотивация'];
-  document.getElementById('prog-steps').innerHTML = blocks.map((b,i)=>`<span class="ps ${i===0?'active':''}" id="ps${i}">${b}</span>`).join('');
+function buildSteps(){
+  const b = mode==='calc'?['🔥 Тело']:mode==='tests'?['🌙 Жизнь','💪 Фитнес','🎯 Мотивация']:['🔥 Тело','🌙 Жизнь','💪 Фитнес','🎯 Мотивация'];
+  document.getElementById('prog-steps').innerHTML=b.map((x,i)=>`<span class="ps ${i===0?'active':''}" id="ps${i}">${x}</span>`).join('');
 }
 
 function renderQ(){
-  const q = getVisibleQ();
-  const total = QUESTIONS.length;
-  const pct = Math.round((curQ/total)*100);
-  document.getElementById('prog-bar').style.width = pct+'%';
+  const q=QUESTIONS[curQ];
+  const total=QUESTIONS.length;
+  document.getElementById('prog-bar').style.width=Math.round(curQ/total*100)+'%';
+  document.getElementById('prog-label').textContent=q.tag;
+  document.getElementById('prog-time').textContent='осталось ~'+Math.max(1,Math.round((total-curQ)*.5))+' мин';
+  document.getElementById('q-counter').textContent=(curQ+1)+' / '+total;
+  document.getElementById('btn-back').style.visibility=curQ===0?'hidden':'visible';
 
-  const minsLeft = Math.max(1, Math.round((total-curQ)*0.5));
-  document.getElementById('prog-label').textContent = q.tag;
-  document.getElementById('prog-time').textContent  = `осталось ~${minsLeft} мин`;
-  document.getElementById('q-counter').textContent  = `${curQ+1} / ${total}`;
-  document.getElementById('btn-back').style.visibility = curQ===0 ? 'hidden' : 'visible';
+  // step highlight
+  const base=mode==='tests'?1:0;
+  document.querySelectorAll('.ps').forEach((el,i)=>{
+    el.classList.remove('done','active');
+    const abs=i+(mode==='tests'?1:0);
+    if(abs<q.block) el.classList.add('done');
+    else if(abs===q.block) el.classList.add('active');
+  });
 
-  updateStepHighlight(q.block);
-
-  const saved = answers[q.id];
-  let html = '';
-
-  html += `<div class="q-tag">${q.tag}</div>`;
-  html += `<div class="q-title">${q.title}</div>`;
-  html += `<div class="q-sub">${q.sub}</div>`;
+  const saved=answers[q.id];
+  let html='';
+  html+=`<div class="q-tag">${q.tag}</div><div class="q-title">${q.title}</div><div class="q-sub">${q.sub}</div>`;
 
   if(q.type==='list'){
-    html += `<div class="options">`;
+    html+=`<div class="options">`;
     q.opts.forEach(o=>{
-      const sel = saved===o.val?' selected':'';
-      html += `<div class="opt${sel}" onclick="selectOpt('${q.id}','${o.val}',this)">
+      const sel=saved===o.val?' selected':'';
+      html+=`<div class="opt${sel}" onclick="selectSingle('${q.id}','${o.val}',this)">
         <div class="opt-icon">${o.icon}</div>
         <div class="opt-body"><div>${o.title}</div>${o.hint?`<div class="opt-hint">${o.hint}</div>`:''}</div>
       </div>`;
     });
-    html += `</div>`;
+    html+=`</div>`;
   } else if(q.type==='cards'){
-    html += `<div class="opts-grid">`;
+    html+=`<div class="opts-grid">`;
     q.opts.forEach(o=>{
-      const sel = saved===o.val?' selected':'';
-      html += `<div class="opt-card${sel}" onclick="selectOpt('${q.id}','${o.val}',this,'card')">
+      const sel=saved===o.val?' selected':'';
+      html+=`<div class="opt-card${sel}" onclick="selectSingle('${q.id}','${o.val}',this,'card')">
         <div class="opt-card-icon">${o.icon}</div>
         <div class="opt-card-title">${o.title}</div>
         ${o.hint?`<div class="opt-card-hint">${o.hint}</div>`:''}
       </div>`;
     });
-    html += `</div>`;
+    html+=`</div>`;
+  } else if(q.type==='multi'){
+    const savedArr=answers[q.id]||[];
+    html+=`<div class="multi-hint">Выбери всё, что подходит</div>`;
+    html+=`<div class="options">`;
+    q.opts.forEach(o=>{
+      const sel=savedArr.includes(o.val)?' selected':'';
+      html+=`<div class="opt-multi${sel}" onclick="toggleMulti('${q.id}','${o.val}',this)">
+        <div class="opt-icon">${o.icon}</div>
+        <div class="opt-body">${o.title}</div>
+        <div class="multi-check"><div class="multi-check-inner"></div></div>
+      </div>`;
+    });
+    html+=`</div>`;
+    if(!answers[q.id]) answers[q.id]=[];
   } else if(q.type==='inputs'){
-    html += `<div class="input-grid">`;
-    const isFemale = answers['gender']==='f';
+    html+=`<div class="input-grid">`;
+    const isFem=answers['gender']==='f';
     q.fields.forEach(f=>{
-      if(f.femaleOnly && !isFemale) return;
-      const val = answers[f.id]||'';
-      html += `<div class="inp-wrap">
-        <label>${f.label}</label>
+      if(f.femaleOnly&&!isFem) return;
+      const val=answers[f.id]||'';
+      html+=`<div class="inp-wrap"><label>${f.label}</label>
         <input type="number" id="inp-${f.id}" value="${val}" placeholder="${f.placeholder}" min="${f.min}" max="${f.max}" oninput="saveInput('${f.id}',this.value)">
         ${f.hint?`<span class="inp-hint">${f.hint}</span>`:''}
       </div>`;
     });
-    html += `</div>`;
+    html+=`</div>`;
   } else if(q.type==='slider'){
-    const val = saved||3;
+    const val=saved||3;
     if(!saved) answers[q.id]='3';
-    html += `<div class="slider-wrap">
+    html+=`<div class="slider-wrap">
       <div class="slider-labels"><span>${q.labels[0]}</span><span>${q.labels[1]}</span></div>
       <input type="range" min="${q.min}" max="${q.max}" step="1" value="${val}" oninput="saveSlider('${q.id}',this.value,this)">
       <div class="slider-value" id="sv">${val}</div>
@@ -504,34 +518,30 @@ function renderQ(){
     </div>`;
   }
 
-  document.getElementById('questions-wrap').innerHTML = html;
+  document.getElementById('questions-wrap').innerHTML=html;
   updateNextBtn();
 }
 
-function getVisibleQ(){ return QUESTIONS[curQ]; }
-
-function updateStepHighlight(blockIdx){
-  let baseBlock = mode==='tests' ? 1 : 0;
-  const relIdx = blockIdx - baseBlock;
-  document.querySelectorAll('.ps').forEach((el,i)=>{
-    el.classList.remove('done','active');
-    if(i < relIdx) el.classList.add('done');
-    else if(i===relIdx) el.classList.add('active');
-  });
-}
-
-function selectOpt(qid,val,el,type){
+function selectSingle(qid,val,el,type){
   answers[qid]=val;
-  const parent = el.closest(type==='card'?'.opts-grid':'.options');
+  const parent=el.closest(type==='card'?'.opts-grid':'.options');
   parent.querySelectorAll(type==='card'?'.opt-card':'.opt').forEach(x=>x.classList.remove('selected'));
   el.classList.add('selected');
   updateNextBtn();
-  setTimeout(()=>nextQ(),300);
+}
+
+function toggleMulti(qid,val,el){
+  if(!answers[qid]) answers[qid]=[];
+  const arr=answers[qid];
+  const idx=arr.indexOf(val);
+  if(idx>=0){ arr.splice(idx,1); el.classList.remove('selected'); }
+  else{ arr.push(val); el.classList.add('selected'); }
+  updateNextBtn();
 }
 
 function saveInput(fid,val){ answers[fid]=val; updateNextBtn(); }
 
-function saveSlider(qid,val,el){
+function saveSlider(qid,val){
   answers[qid]=val;
   document.getElementById('sv').textContent=val;
   const q=QUESTIONS.find(x=>x.id===qid);
@@ -542,11 +552,12 @@ function updateNextBtn(){
   const q=QUESTIONS[curQ];
   let ok=false;
   if(q.type==='list'||q.type==='cards') ok=!!answers[q.id];
+  else if(q.type==='multi') ok=(answers[q.id]||[]).length>0;
   else if(q.type==='slider') ok=true;
   else if(q.type==='inputs'){
-    const isFemale=answers['gender']==='f';
+    const isFem=answers['gender']==='f';
     ok=q.fields.every(f=>{
-      if(f.femaleOnly&&!isFemale) return true;
+      if(f.femaleOnly&&!isFem) return true;
       return answers[f.id]&&answers[f.id].toString().trim()!=='';
     });
   }
@@ -563,7 +574,6 @@ function nextQ(){
   if(curQ<QUESTIONS.length-1){ curQ++; renderQ(); window.scrollTo({top:0,behavior:'smooth'}); }
   else showResult();
 }
-
 function prevQ(){
   if(curQ>0){ curQ--; renderQ(); window.scrollTo({top:0,behavior:'smooth'}); }
 }
@@ -571,143 +581,124 @@ function prevQ(){
 function showResult(){
   document.getElementById('screen-assessment').classList.add('hidden');
   document.getElementById('screen-result').classList.remove('hidden');
-
   const a=answers;
-  const showCalc = (mode==='calc'||mode==='full');
-  const showTests= (mode==='tests'||mode==='full');
-  const showPlan = (mode==='full');
-
-  document.getElementById('result-intro').textContent = mode==='calc'
-    ? 'Вот твои персональные цифры по составу тела и питанию.'
-    : mode==='tests'
-    ? 'Вот твой профиль образа жизни и мотивации.'
-    : 'Полный профиль: расчёты по телу, профиль образа жизни и рекомендации.';
-
-  if(showCalc){
-    document.getElementById('rs-numbers').style.display='block';
-    calcNumbers(a);
-  }
-  if(showTests){
-    document.getElementById('rs-profile').style.display='block';
-    buildProfile(a);
-  }
-  if(showPlan){
-    document.getElementById('rs-plan').style.display='block';
-    buildPlanDesc(a);
-  }
-
+  const showCalc=mode==='calc'||mode==='full';
+  const showTests=mode==='tests'||mode==='full';
+  const showPlan=mode==='full';
+  document.getElementById('result-intro').textContent=
+    mode==='calc'?'Твои персональные цифры по составу тела и питанию.':
+    mode==='tests'?'Твой профиль образа жизни и мотивации.':
+    'Полный профиль: расчёты, профиль и персональный AI-план.';
+  if(showCalc){ document.getElementById('rs-numbers').classList.remove('hidden'); calcNumbers(a); }
+  if(showTests){ document.getElementById('rs-profile').classList.remove('hidden'); buildProfile(a); }
+  if(showPlan){ document.getElementById('rs-plan').classList.remove('hidden'); buildPlanDesc(a); }
   window.scrollTo({top:0,behavior:'smooth'});
 }
 
 function calcNumbers(a){
-  const w=parseFloat(a.weight)||70;
-  const h=parseFloat(a.height)||175;
-  const age=parseFloat(a.age)||25;
-  const g=a.gender||'m';
-  const act=parseFloat(a.activity)||1.375;
-  const goal=a.goal||'maintain';
-  const goalK={loss:.8,maintain:1,gain:1.15,health:1}[goal]||1;
-
-  // BMR Mifflin
-  const bmr=Math.round(g==='m' ? 10*w+6.25*h-5*age+5 : 10*w+6.25*h-5*age-161);
-  const tdee=Math.round(bmr*act);
-  const kcal=Math.round(tdee*goalK);
+  const w=parseFloat(a.weight)||70, h=parseFloat(a.height)||175, age=parseFloat(a.age)||25;
+  const g=a.gender||'m', act=parseFloat(a.activity)||1.375;
+  const goalK={loss:.8,maintain:1,gain:1.15,health:1}[a.goal]||1;
+  const bmr=Math.round(g==='m'?10*w+6.25*h-5*age+5:10*w+6.25*h-5*age-161);
+  const kcal=Math.round(bmr*act*goalK);
   const prot=Math.round(kcal*.25/4), fat=Math.round(kcal*.30/9), carb=Math.round(kcal*.45/4);
-  const waterMl=Math.round(w*35);
-
-  // BMI
   const bmi=+(w/((h/100)**2)).toFixed(1);
-  let bmiCat='';
-  if(bmi<18.5) bmiCat='Недовес';
-  else if(bmi<25) bmiCat='Норма';
-  else if(bmi<30) bmiCat='Избыток';
-  else bmiCat='Ожирение';
-
+  const bmiCat=bmi<18.5?'Недовес':bmi<25?'Норма':bmi<30?'Избыток':'Ожирение';
   document.getElementById('r-bmi').textContent=bmi;
   document.getElementById('r-bmi-cat').textContent=bmiCat;
   document.getElementById('r-bmr').textContent=bmr+' ккал';
   document.getElementById('r-kcal').textContent=kcal.toLocaleString('ru')+' ккал';
-  const goalLabels={loss:'цель: похудение',maintain:'цель: поддержание',gain:'цель: набор',health:'цель: здоровье'};
-  document.getElementById('r-kcal-sub').textContent=goalLabels[goal]||'';
-  document.getElementById('r-prot').textContent=prot+' г';
-  document.getElementById('r-prot-k').textContent=Math.round(prot*4)+' ккал · 25%';
-  document.getElementById('r-fat2').textContent=fat+' г';
-  document.getElementById('r-fat-k').textContent=Math.round(fat*9)+' ккал · 30%';
-  document.getElementById('r-carb').textContent=carb+' г';
-  document.getElementById('r-carb-k').textContent=Math.round(carb*4)+' ккал · 45%';
-  document.getElementById('r-water').textContent=(waterMl/1000).toFixed(1)+' л';
-  document.getElementById('r-water-sub').textContent=waterMl.toLocaleString('ru')+' мл в день · формула 35 мл × вес';
-
-  // Fat %
+  document.getElementById('r-kcal-sub').textContent={loss:'цель: похудение',maintain:'цель: поддержание',gain:'цель: набор',health:'цель: здоровье'}[a.goal]||'';
+  document.getElementById('r-prot').textContent=prot+' г'; document.getElementById('r-prot-k').textContent=Math.round(prot*4)+' ккал · 25%';
+  document.getElementById('r-fat2').textContent=fat+' г'; document.getElementById('r-fat-k').textContent=Math.round(fat*9)+' ккал · 30%';
+  document.getElementById('r-carb').textContent=carb+' г'; document.getElementById('r-carb-k').textContent=Math.round(carb*4)+' ккал · 45%';
+  const wml=Math.round(w*35);
+  document.getElementById('r-water').textContent=(wml/1000).toFixed(1)+' л';
+  document.getElementById('r-water-sub').textContent=wml.toLocaleString('ru')+' мл · формула 35 мл × вес';
   const neck=parseFloat(a.neck), waist=parseFloat(a.waist), hips=parseFloat(a.hips);
-  if(neck&&waist&&h){
-    let fatPct;
-    if(g==='m'){
-      fatPct=495/(1.0324-0.19077*Math.log10(waist-neck)+0.15456*Math.log10(h))-450;
-    } else if(hips){
-      fatPct=495/(1.29579-0.35004*Math.log10(waist+hips-neck)+0.22100*Math.log10(h))-450;
-    }
-    if(fatPct&&isFinite(fatPct)){
-      fatPct=Math.max(3,Math.min(60,Math.round(fatPct*10)/10));
-      const fatMass=Math.round(w*fatPct/100*10)/10;
-      const leanMass=Math.round((w-fatMass)*10)/10;
-
+  if(neck&&waist){
+    let fp; try{
+      fp=g==='m'
+        ?495/(1.0324-0.19077*Math.log10(waist-neck)+0.15456*Math.log10(h))-450
+        :hips?495/(1.29579-0.35004*Math.log10(waist+hips-neck)+0.22100*Math.log10(h))-450:null;
+    }catch(e){}
+    if(fp&&isFinite(fp)){
+      fp=Math.max(3,Math.min(60,Math.round(fp*10)/10));
+      const fm=Math.round(w*fp/100*10)/10, lm=Math.round((w-fm)*10)/10;
       document.getElementById('nc-fat').style.display='block';
-      document.getElementById('fat-bar-section').style.display='block';
-      document.getElementById('r-fat-pct').textContent=fatPct+'%';
-      document.getElementById('r-fat-mass').textContent=`жир: ${fatMass} кг · мышцы: ${leanMass} кг`;
-
-      const minP=g==='m'?3:10, maxP=g==='m'?45:55;
-      const pos=Math.min(96,Math.max(2,(fatPct-minP)/(maxP-minP)*100));
-      document.getElementById('fat-marker').style.left=pos+'%';
-
-      const cats_m=[{max:6,name:'Эссенциальный',cls:'rgba(59,130,246,.2)',color:'#60a5fa',desc:'Критически низкий'},{max:14,name:'Атлетический',cls:'rgba(34,197,94,.2)',color:'var(--green)',desc:'Уровень атлетов'},{max:18,name:'Хорошая форма',cls:'rgba(34,197,94,.15)',color:'var(--green)',desc:'Выше среднего'},{max:25,name:'Норма',cls:'rgba(168,85,247,.2)',color:'var(--purple2)',desc:'Средний уровень'},{max:32,name:'Выше нормы',cls:'rgba(245,158,11,.2)',color:'var(--amber)',desc:'Стоит поработать'},{max:100,name:'Высокий',cls:'rgba(239,68,68,.2)',color:'#f87171',desc:'Нужны изменения'}];
-      const cats_f=[{max:14,name:'Эссенциальный',cls:'rgba(59,130,246,.2)',color:'#60a5fa',desc:'Критически низкий'},{max:21,name:'Атлетический',cls:'rgba(34,197,94,.2)',color:'var(--green)',desc:'Уровень спортсменок'},{max:25,name:'Хорошая форма',cls:'rgba(34,197,94,.15)',color:'var(--green)',desc:'Выше среднего'},{max:32,name:'Норма',cls:'rgba(168,85,247,.2)',color:'var(--purple2)',desc:'Средний уровень'},{max:39,name:'Выше нормы',cls:'rgba(245,158,11,.2)',color:'var(--amber)',desc:'Стоит поработать'},{max:100,name:'Высокий',cls:'rgba(239,68,68,.2)',color:'#f87171',desc:'Нужны изменения'}];
-      const cat=(g==='m'?cats_m:cats_f).find(c=>fatPct<=c.max);
-      const badge=document.getElementById('fat-cat-badge');
-      badge.textContent=cat.name;
-      badge.style.background=cat.cls;
-      badge.style.color=cat.color;
-      badge.style.border=`1px solid ${cat.color}40`;
-      document.getElementById('fat-cat-desc').textContent=cat.desc;
+      document.getElementById('fat-bar-section').classList.remove('hidden');
+      document.getElementById('r-fat-pct').textContent=fp+'%';
+      document.getElementById('r-fat-mass').textContent='жир: '+fm+' кг · мышцы: '+lm+' кг';
+      const minP=g==='m'?3:10,maxP=g==='m'?45:55;
+      document.getElementById('fat-marker').style.left=Math.min(96,Math.max(2,(fp-minP)/(maxP-minP)*100))+'%';
+      const cats=[{max:g==='m'?6:14,n:'Эссенциальный',c:'#60a5fa'},{max:g==='m'?14:21,n:'Атлетический',c:'var(--green)'},{max:g==='m'?18:25,n:'Хорошая форма',c:'var(--green)'},{max:g==='m'?25:32,n:'Норма',c:'var(--purple2)'},{max:g==='m'?32:39,n:'Выше нормы',c:'var(--amber)'},{max:100,n:'Высокий',c:'#f87171'}];
+      const cat=cats.find(c=>fp<=c.max);
+      const b=document.getElementById('fat-cat-badge');
+      b.textContent=cat.n+' · '+fp+'%';
+      b.style.cssText=`background:rgba(0,0,0,.2);color:${cat.c};border:1px solid ${cat.c}55`;
     }
   }
 }
 
 function buildProfile(a){
-  const lifestyleMap={chaos:'Хаотичный',schedule:'По расписанию',skip:'Пропускает приёмы',track:'Следит за питанием'};
-  const fitnessMap={beginner:'Новичок',basic:'Базовый',intermediate:'Средний',advanced:'Продвинутый'};
-  const motivMap={look:'Внешний вид',energy:'Энергия',sport:'Спортрезультат',feel:'Самочувствие'};
-  const styleMap={strict:'Чёткий план',flexible:'Гибкий подход',support:'С поддержкой',science:'Научный подход'};
-
-  document.getElementById('r-eating').textContent    = lifestyleMap[a.eating]||'—';
-  document.getElementById('r-fitness').textContent   = fitnessMap[a.fitness_lvl]||'—';
-  document.getElementById('r-motivation').textContent= motivMap[a.drive]||'—';
-  document.getElementById('r-style').textContent     = styleMap[a.style]||'—';
-
+  const eMap={chaos:'Хаотичный',schedule:'По расписанию',skip:'Пропускает приёмы',track:'Следит за питанием'};
+  const fMap={beginner:'Новичок',basic:'Базовый',intermediate:'Средний',advanced:'Продвинутый'};
+  const sMap={strict:'Чёткий план',flexible:'Гибкий подход',support:'С поддержкой',science:'Научный подход'};
+  const mLabels={look:'Внешний вид',energy:'Энергия',sport:'Спорт',feel:'Самочувствие',strength:'Сила',balance:'Баланс'};
+  document.getElementById('r-eating').textContent=eMap[a.eating]||'—';
+  document.getElementById('r-fitness').textContent=fMap[a.fitness_lvl]||'—';
+  const motArr=(Array.isArray(a.drive)?a.drive:[]).map(x=>mLabels[x]||x);
+  document.getElementById('r-motivation').textContent=motArr.join(', ')||'—';
+  document.getElementById('r-style').textContent=sMap[a.style]||'—';
   const tags=[];
-  if(a.sleep==='bad'||a.sleep==='ok')  tags.push({t:'Улучшить сон',c:'t-amber'});
-  if(parseInt(a.stress)>=4)            tags.push({t:'Снизить стресс',c:'t-amber'});
-  if(a.activity==='1.2')               tags.push({t:'Добавить движение',c:'t-blue'});
-  if(a.injuries&&a.injuries!=='none')  tags.push({t:'Учесть травмы',c:'t-purple'});
+  if(a.sleep==='bad'||a.sleep==='ok') tags.push({t:'Улучшить сон',c:'t-amber'});
+  if(parseInt(a.stress)>=4) tags.push({t:'Снизить стресс',c:'t-amber'});
+  if(a.activity==='1.2') tags.push({t:'Добавить движение',c:'t-blue'});
+  if(a.injuries&&a.injuries!=='none') tags.push({t:'Учесть травмы',c:'t-purple'});
   if(a.place) tags.push({t:{gym:'Зал',home:'Дома',outdoor:'Улица',mix:'Комбо'}[a.place],c:'t-green'});
-  if(a.style) tags.push({t:styleMap[a.style],c:'t-blue'});
-
+  if(a.style) tags.push({t:sMap[a.style],c:'t-blue'});
   document.getElementById('tags-row').innerHTML=tags.filter(x=>x.t).map(x=>`<span class="r-tag ${x.c}">${x.t}</span>`).join('');
 }
 
 function buildPlanDesc(a){
-  const goalDescMap={loss:'сбросить жир',maintain:'поддержать форму',gain:'набрать массу',health:'укрепить здоровье'};
-  const fitnessMap={beginner:'новичок',basic:'базовый уровень',intermediate:'средний уровень',advanced:'продвинутый'};
+  const gm={loss:'сбросить жир',maintain:'поддержать форму',gain:'набрать массу',health:'улучшить здоровье'};
+  const fm={beginner:'новичок',basic:'базовый уровень',intermediate:'средний уровень',advanced:'продвинутый'};
   document.getElementById('plan-desc').textContent=
-    `Уровень: ${fitnessMap[a.fitness_lvl]||'?'}. Цель: ${goalDescMap[a.goal]||'улучшить форму'}. План будет реалистичным и адаптированным под твой образ жизни.`;
+    `Уровень: ${fm[a.fitness_lvl]||'?'}. Цель: ${gm[a.goal]||'улучшить форму'}. AI составит план под твои данные, образ жизни и реальные условия.`;
 }
 
-function selPlan(n){
-  [1,2,3].forEach(i=>document.getElementById('po'+i).classList.toggle('sel',i===n));
+function selFmt(n){
+  planFormat=n;
+  [1,2,3].forEach(i=>document.getElementById('pf'+i).classList.toggle('sel',i===n));
 }
 
-// check url param
+const TG_BOT = 'FitState_bot'; // замени на @username бота без @
+
+function generatePlan(){
+  // Кодируем все данные в base64 и передаём боту через deeplink
+  const payload = JSON.stringify(answers);
+  const encoded = btoa(unescape(encodeURIComponent(payload)))
+    .replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'');
+  // Telegram deeplink принимает max 64 символа — сжимаем ключи
+  const slim = JSON.stringify(compactAnswers(answers));
+  const enc = btoa(unescape(encodeURIComponent(slim)))
+    .replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'');
+  const url = `https://t.me/${TG_BOT}?start=${enc}`;
+  window.open(url, '_blank');
+}
+
+function compactAnswers(a){
+  // Передаём только нужные поля — экономим место в deeplink
+  return {
+    gender:a.gender, goal:a.goal, age:a.age, height:a.height,
+    weight:a.weight, neck:a.neck, waist:a.waist, hips:a.hips,
+    activity:a.activity, sleep:a.sleep, stress:a.stress,
+    eating:a.eating, cook:a.cook, fitness_lvl:a.fitness_lvl,
+    injuries:a.injuries, place:a.place, drive:a.drive,
+    fail_reason:a.fail_reason, style:a.style
+  };
+}
+
 window.onload=()=>{
   const p=new URLSearchParams(location.search).get('mode');
   if(p) selectMode(p);
