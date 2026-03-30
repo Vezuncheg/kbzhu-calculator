@@ -396,6 +396,9 @@ function selectMode(m){
 function startAssessment(){
   QUESTIONS=mode==='calc'?[...Q_BODY]:mode==='tests'?[...Q_TESTS]:[...Q_BODY,...Q_TESTS];
   curQ=0;
+  // Восстанавливаем сохранённые данные
+  const saved=localStorage.getItem('pp_answers');
+  if(saved){ try{ answers=JSON.parse(saved); }catch(e){ answers={}; } }
   document.getElementById('screen-intro').classList.add('hidden');
   document.getElementById('screen-assessment').classList.remove('hidden');
   buildSteps();
@@ -468,6 +471,7 @@ function renderQ(){
 
 function selectSingle(qid,val,el,type){
   answers[qid]=val;
+  localStorage.setItem('pp_answers',JSON.stringify(answers));
   const parent=el.closest(type==='card'?'.opts-grid':'.options');
   parent.querySelectorAll(type==='card'?'.opt-card':'.opt').forEach(x=>x.classList.remove('selected'));
   el.classList.add('selected');
@@ -480,13 +484,19 @@ function toggleMulti(qid,val,el){
   const idx=arr.indexOf(val);
   if(idx>=0){arr.splice(idx,1);el.classList.remove('selected');}
   else{arr.push(val);el.classList.add('selected');}
+  localStorage.setItem('pp_answers',JSON.stringify(answers));
   updateNextBtn();
 }
 
-function saveInput(fid,val){answers[fid]=val;updateNextBtn();}
+function saveInput(fid,val){
+  answers[fid]=val;
+  localStorage.setItem('pp_answers',JSON.stringify(answers));
+  updateNextBtn();
+}
 
 function saveSlider(qid,val){
   answers[qid]=val;
+  localStorage.setItem('pp_answers',JSON.stringify(answers));
   document.getElementById('sv').textContent=val;
   const q=QUESTIONS.find(x=>x.id===qid);
   if(q&&q.descs) document.getElementById('sd').textContent=q.descs[val-1];
@@ -652,14 +662,7 @@ async function generatePlan(){
 window.onload=()=>{
   const p=new URLSearchParams(location.search).get('mode');
   if(p) selectMode(p);
-  // Восстанавливаем сохранённые данные
-  const saved=localStorage.getItem('pp_answers');
-  if(saved) try{answers=JSON.parse(saved);}catch(e){}
 };
-
-// Сохраняем данные при каждом изменении
-const _saveInput=saveInput;
-saveInput=(fid,val)=>{_saveInput(fid,val);localStorage.setItem('pp_answers',JSON.stringify(answers));};
 </script>
 </body>
 </html>
