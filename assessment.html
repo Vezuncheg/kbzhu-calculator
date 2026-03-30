@@ -628,13 +628,25 @@ async function generatePlan(){
     });
     const result=await resp.json();
     const url=`https://t.me/${TG_BOT}?start=${result.session_id}`;
-    window.open(url,'_blank');
+    // Показываем большую кнопку-ссылку вместо window.open (работает на мобильных)
+    btn.disabled=false;
+    btn.innerHTML='<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg> Открыть Telegram';
+    btn.onclick=()=>{ window.location.href=url; };
+    // Показываем дополнительную прямую ссылку
+    const existing=document.getElementById('tg-direct-link');
+    if(existing) existing.remove();
+    const link=document.createElement('a');
+    link.id='tg-direct-link';
+    link.href=url;
+    link.textContent='Нажми здесь если кнопка не сработала →';
+    link.style.cssText='display:block;text-align:center;color:var(--green);font-size:14px;margin-top:12px;text-decoration:underline;';
+    btn.parentNode.insertBefore(link, btn.nextSibling);
   }catch(e){
     console.error('Error:',e);
+    btn.disabled=false;
+    btn.innerHTML='<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg> Получить план в Telegram';
     alert('Ошибка соединения. Попробуй ещё раз.');
   }
-  btn.disabled=false;
-  btn.innerHTML='<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg> Получить план в Telegram';
 }
 
 window.onload=()=>{
