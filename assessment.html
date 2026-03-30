@@ -194,11 +194,12 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:28px 5%;
   <h1 class="intro-title">Узнай себя<br>за <span style="background:linear-gradient(90deg,#a855f7,#3b82f6);-webkit-background-clip:text;-webkit-text-fill-color:transparent">7 минут</span></h1>
   <p class="intro-sub">Выбери формат — от быстрых расчётов до полного профиля с AI-планом.</p>
   <div class="mode-cards">
-    <div class="mode-card" id="mc-calc" onclick="selectMode('calc')">
-      <div class="mode-icon">🧮</div>
-      <div class="mode-title">Только расчёты</div>
-      <div class="mode-time">⏱ ~2 мин</div>
-      <div class="mode-desc">% жира, BMR, КБЖУ — только цифры</div>
+    <div class="mode-card selected" id="mc-full" onclick="selectMode('full')" style="border-color:var(--purple);background:rgba(124,58,237,.12);position:relative">
+      <div style="position:absolute;top:-10px;left:50%;transform:translateX(-50%);background:var(--green);color:#0a0a0f;font-size:10px;font-weight:800;padding:3px 12px;border-radius:100px;white-space:nowrap">Рекомендуем</div>
+      <div class="mode-icon">👤</div>
+      <div class="mode-title">Полный профиль</div>
+      <div class="mode-time">⏱ ~7 мин</div>
+      <div class="mode-desc">Расчёты + тесты + AI-план</div>
     </div>
     <div class="mode-card" id="mc-tests" onclick="selectMode('tests')">
       <div class="mode-icon">📋</div>
@@ -206,11 +207,11 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:28px 5%;
       <div class="mode-time">⏱ ~4 мин</div>
       <div class="mode-desc">Образ жизни, фитнес, мотивация</div>
     </div>
-    <div class="mode-card selected" id="mc-full" onclick="selectMode('full')">
-      <div class="mode-icon">👤</div>
-      <div class="mode-title">Полный профиль</div>
-      <div class="mode-time">⏱ ~7 мин</div>
-      <div class="mode-desc">Расчёты + тесты + AI-план</div>
+    <div class="mode-card" id="mc-calc" onclick="selectMode('calc')">
+      <div class="mode-icon">🧮</div>
+      <div class="mode-title">Только расчёты</div>
+      <div class="mode-time">⏱ ~2 мин</div>
+      <div class="mode-desc">% жира, BMR, КБЖУ — только цифры</div>
     </div>
   </div>
   <button class="start-btn" onclick="startAssessment()">
@@ -434,7 +435,7 @@ function selectMode(m){
 
 function startAssessment(){
   QUESTIONS = mode==='calc' ? [...Q_BODY] : mode==='tests' ? [...Q_TESTS] : [...Q_BODY,...Q_TESTS];
-  answers={}; curQ=0;
+  loadAnswersFromStorage(); curQ=0;
   document.getElementById('screen-intro').classList.add('hidden');
   document.getElementById('screen-assessment').classList.remove('hidden');
   buildSteps();
@@ -532,6 +533,7 @@ function renderQ(){
 
 function selectSingle(qid,val,el,type){
   answers[qid]=val;
+  saveAnswersToStorage();
   const parent=el.closest(type==='card'?'.opts-grid':'.options');
   parent.querySelectorAll(type==='card'?'.opt-card':'.opt').forEach(x=>x.classList.remove('selected'));
   el.classList.add('selected');
@@ -544,13 +546,15 @@ function toggleMulti(qid,val,el){
   const idx=arr.indexOf(val);
   if(idx>=0){ arr.splice(idx,1); el.classList.remove('selected'); }
   else{ arr.push(val); el.classList.add('selected'); }
+  saveAnswersToStorage();
   updateNextBtn();
 }
 
-function saveInput(fid,val){ answers[fid]=val; updateNextBtn(); }
+function saveInput(fid,val){ answers[fid]=val; saveAnswersToStorage(); updateNextBtn(); }
 
 function saveSlider(qid,val){
   answers[qid]=val;
+  saveAnswersToStorage();
   document.getElementById('sv').textContent=val;
   const q=QUESTIONS.find(x=>x.id===qid);
   if(q&&q.descs) document.getElementById('sd').textContent=q.descs[val-1];
@@ -680,31 +684,34 @@ function selFmt(n){
   [1,2,3].forEach(i=>document.getElementById('pf'+i).classList.toggle('sel',i===n));
 }
 
-const TG_BOT = 'FitState_bot'; // замени на @username бота без @
+const TG_BOT = 'FitState_bot';
+const STORAGE_KEY = 'pp_reality_answers';
+
+function saveAnswersToStorage(){
+  try{ localStorage.setItem(STORAGE_KEY, JSON.stringify(answers)); }catch(e){}
+}
+
+function loadAnswersFromStorage(){
+  try{
+    const saved = localStorage.getItem(STORAGE_KEY);
+    if(saved) answers = JSON.parse(saved);
+  }catch(e){}
+}
 
 function generatePlan(){
-  // Кодируем все данные в base64 и передаём боту через deeplink
-  const payload = JSON.stringify(answers);
-  const encoded = btoa(unescape(encodeURIComponent(payload)))
-    .replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'');
-  // Telegram deeplink принимает max 64 символа — сжимаем ключи
-  const slim = JSON.stringify(compactAnswers(answers));
-  const enc = btoa(unescape(encodeURIComponent(slim)))
+  const slim = {
+    gender:answers.gender, goal:answers.goal, age:answers.age,
+    height:answers.height, weight:answers.weight, neck:answers.neck,
+    waist:answers.waist, hips:answers.hips, activity:answers.activity,
+    sleep:answers.sleep, stress:answers.stress, eating:answers.eating,
+    cook:answers.cook, fitness_lvl:answers.fitness_lvl,
+    injuries:answers.injuries, place:answers.place, drive:answers.drive,
+    fail_reason:answers.fail_reason, style:answers.style
+  };
+  const enc = btoa(unescape(encodeURIComponent(JSON.stringify(slim))))
     .replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'');
   const url = `https://t.me/${TG_BOT}?start=${enc}`;
   window.open(url, '_blank');
-}
-
-function compactAnswers(a){
-  // Передаём только нужные поля — экономим место в deeplink
-  return {
-    gender:a.gender, goal:a.goal, age:a.age, height:a.height,
-    weight:a.weight, neck:a.neck, waist:a.waist, hips:a.hips,
-    activity:a.activity, sleep:a.sleep, stress:a.stress,
-    eating:a.eating, cook:a.cook, fitness_lvl:a.fitness_lvl,
-    injuries:a.injuries, place:a.place, drive:a.drive,
-    fail_reason:a.fail_reason, style:a.style
-  };
 }
 
 window.onload=()=>{
